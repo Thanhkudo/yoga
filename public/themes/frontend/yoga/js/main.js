@@ -135,7 +135,24 @@ $('.slick_content').slick({
   autoplaySpeed: 2000,
 });
 
-
+$(".slider-single").slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  fade: true,
+  useTransform: true,
+  asNavFor: ".slider-nav"
+});
+$(".slider-nav").slick({
+  
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  asNavFor: ".slider-single",
+  dots: false,
+  focusOnSelect: true
 });
 
+
+
+});
 

@@ -1057,6 +1057,8 @@ a:hover {
   z-index: -1;
 }
 
+
+
 @media screen and (max-width: 576px) {
   .carousel-inner {
     width: 100%;
@@ -1187,9 +1189,7 @@ a:hover {
     background-position: center;
     height: calc(100vh - 110px);
   }
-  .mt_page-title {
-    margin-top: 40px;
-  }
+  
   .about_us .items {
     padding-top: 20px;
     padding-bottom: 30px;
