@@ -963,14 +963,99 @@ a:hover {
   line-height: 70px;
 }
 .box_form .form-group {
-  margin-bottom: 30PX;
+  margin-bottom: 30px;
 }
 .box_form .form-control {
   border-radius: 30px;
 }
 .box_form .box_radio {
-margin-bottom: 5px;}
+  margin-bottom: 5px;
+}
+.box_detail .box {
+  padding: 55px 20px;
+}
+.box_detail .box .title {
+  font-size: 25px;
+  font-weight: bold;
+}
+.box_detail .box .line {
+  width: 50%;
+  border: 1px solid #fff;
+  margin: auto;
+  margin-top: 15px;
+}
+.box_detail .box .money {
+  font-size: 80px;
+  font-family: Neuton;
+}
+.box_detail .box .money sup {
+  font-size: 40px;
+  font-family: Neuton;
+}
+.box_detail .bref {
+  font-size: 24px;
+  text-align: justify;
+}
+.bd_l {
+  border-left: 1px solid #00000040;
+}
+.box_ul_star {
+  padding-left: 30px;
+  list-style-image: url(../images/icon_star.svg);
+}
+.box_ul_star ul li {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+#form_learning,
+#detail {
+  margin-top: 150px;
+}
+.section-container {
+  width: 90%;
+  margin: auto;
+}
+.post-author {
+  font-size: 20px;
+  line-height: 40px;
+  margin-top: 20px;
+}
+.post-line {
+  margin: 0px;
+  width: 20%;
+  border: 3px solid #25ab75;
+  border-radius: 5px;
+}
 
+.post-title {
+  margin-top: 10px;
+}
+.post-title a {
+  font-size: 24px;
+  font-weight: 500;
+  color: #000;
+}
+.items_content .icon {
+  font-size: 24px;
+}
+.items_content .name {
+  font-size: 26px;
+}
+.items_content .bref {
+  font-size: 21px;
+  color: #565656;
+}
+.bf_img::before {
+  content: "";
+  background: url(../images/Dot.png);
+  height: 227px;
+  width: 179px;
+  position: absolute;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: -1;
+}
 
 @media screen and (max-width: 576px) {
   .carousel-inner {
@@ -1150,5 +1235,17 @@ margin-bottom: 5px;}
     background-repeat: no-repeat;
     background-position: center;
     height: calc(100vh - 110px);
+  }
+  .bd_l {
+    border-left: none;
+  }
+  .section-container {
+    width: 100%;
+  }
+  .items_content .name{
+    font-size: 20px;
+  }
+  .items_content .bref{
+    font-size: 18px;
   }
 }

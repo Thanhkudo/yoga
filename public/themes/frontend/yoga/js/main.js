@@ -79,9 +79,7 @@ $(function () {
     });
   };
   siteMenuClone();
-});
 
-$(document).ready(function () {
   $(".image-link").magnificPopup({
     type: "iframe",
     src: $(this).attr("href"),
@@ -126,9 +124,18 @@ $(document).ready(function () {
     }
   });
   $(".box_items .slick_items").on("mouseover", function () {
-	$(this).addClass("slick-center");
+    $(this).addClass("slick-center");
   });
   $(".box_items .slick_items").on("mouseout", function () {
-	$(this).removeClass("slick-center");
+    $(this).removeClass("slick-center");
   });
+$('.slick_content').slick({
+  dots: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
 });
+
+
+});
+
+
