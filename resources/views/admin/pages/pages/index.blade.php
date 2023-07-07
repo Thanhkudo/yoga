@@ -84,14 +84,15 @@
                       {{ __($routes[$row->route_name] ?? '') }}
                     </td>
                     <td>
+                      {{$row->route_name."-".$row->alias}}
                       @if (isset($routes['show_route'][$row->route_name]) && $routes['show_route'][$row->route_name])
                         @if ($routes['has_alias'][$row->route_name])
-                          <a href="{{ route($row->route_name) }}" target="_blank"
+                          <a href="{{ route($row->route_name, ['alias' => $row->alias]) }}" target="_blank"
                             rel="noopener noreferrer">
                             <span class="btn btn-flat btn-sm btn-info">
                               <i class="fa fa-external-link"></i>
                             </span>
-                            {{ route($row->route_name) }}
+                            {{ route($row->route_name, ['alias' => $row->alias]) }}
                           </a>
                         @else
                           <a href="{{ route($row->route_name) }}" target="_blank" rel="noopener noreferrer">

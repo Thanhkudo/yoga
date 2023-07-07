@@ -100,7 +100,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="has-children d-none">
+                <li class="has-children ">
                   <a href="#about-section" class="nav-link">About Us</a>
                   <ul class="dropdown arrow-top">
                     <li><a href="#team-section" class="nav-link">Team</a></li>
@@ -134,17 +134,24 @@
     <div id="site-main" class="site-main">
       <div id="main-content" class="main-content">
         <div id="content" class="site-content" role="main">
-          <section
-            id="slider"
-            class="slider-element min-vh-60 min-vh-md-100 include-header"
+          <section id="slider" class="slider-element min-vh-60 min-vh-md-100 include-header"
           >
             <div
-              id="carouselExampleSlidesOnly"
+              id="carouselBanner"
               class="carousel slide"
               data-ride="carousel"
             >
               <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div
+                  class="carousel-item active"
+                  style="
+                    background: url(images/banner.png);
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    height: 100%;
+                  "
+                >
                   <div class="container">
                     <div class="frame">
                       <p class="font-playball white">Chào mừng tới</p>
@@ -167,7 +174,14 @@
                     </a>
                   </div>
                 </div>
+               
               </div>
+              <a class="carousel-control-prev" href="#carouselBanner" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </a>
+              <a class="carousel-control-next" href="#carouselBanner" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </a>
             </div>
           </section>
 
@@ -554,9 +568,7 @@
                               value=""
                             />
                           </div>
-                          <i
-                            class="far fa-check-circle"
-                          ></i>
+                          <i class="far fa-check-circle"></i>
                         </div>
                         <div class="form-group row align-items-center mb-lg-4">
                           <label for="weight" class="col-sm-5 col-form-label"
@@ -571,9 +583,7 @@
                               value=""
                             />
                           </div>
-                          <i
-                            class="far fa-check-circle"
-                          ></i>
+                          <i class="far fa-check-circle"></i>
                         </div>
                         <div class="form-group row align-items-center mb-lg-4">
                           <label for="gender" class="col-sm-5 col-form-label"
@@ -584,15 +594,13 @@
                               name="gender"
                               id="gender"
                               class="form-control"
-                              >
+                            >
                               <option value="">Lựa chọn</option>
                               <option value="1">Nữ</option>
                               <option value="2">Nam</option>
                             </select>
                           </div>
-                          <i
-                            class="far fa-check-circle"
-                          ></i>
+                          <i class="far fa-check-circle"></i>
                         </div>
                         <div class="form-group row align-items-center mb-lg-4">
                           <label for="year" class="col-sm-5 col-form-label"
@@ -607,9 +615,7 @@
                               value=""
                             />
                           </div>
-                          <i
-                            class="far fa-check-circle"
-                          ></i>
+                          <i class="far fa-check-circle"></i>
                         </div>
                       </div>
                       <div class="col-12 col-sm-6">
@@ -623,33 +629,29 @@
                               id="gender"
                               class="form-control"
                             >
-                            <option value="">Lựa chọn</option>
+                              <option value="">Lựa chọn</option>
                               <option value="1">Có</option>
                               <option value="2">Không</option>
                             </select>
                           </div>
-                          <i
-                            class="far fa-check-circle"
-                          ></i>
+                          <i class="far fa-check-circle"></i>
                         </div>
                         <div class="form-group row align-items-center mb-lg-4">
                           <label for="weight" class="col-sm-6 col-form-label"
                             >Bạn có chấn thương</label
                           >
-                          <div class="col-11  col-sm-4">
+                          <div class="col-11 col-sm-4">
                             <select
                               name="gender"
                               id="gender"
                               class="form-control"
                             >
-                            <option value="">Lựa chọn</option>
+                              <option value="">Lựa chọn</option>
                               <option value="1">Có</option>
                               <option value="2">Không</option>
                             </select>
                           </div>
-                          <i
-                            class="far fa-check-circle"
-                          ></i>
+                          <i class="far fa-check-circle"></i>
                         </div>
                         <div class="form-group row align-items-center mb-lg-4">
                           <label for="gender" class="col-sm-6 col-form-label"
@@ -661,33 +663,29 @@
                               id="gender"
                               class="form-control"
                             >
-                            <option value="">Lựa chọn</option>
+                              <option value="">Lựa chọn</option>
                               <option value="1">Có</option>
                               <option value="2">Không</option>
                             </select>
                           </div>
-                          <i
-                            class="far fa-check-circle"
-                          ></i>
+                          <i class="far fa-check-circle"></i>
                         </div>
                         <div class="form-group row align-items-center mb-lg-4">
                           <label for="year" class="col-sm-6 col-form-label"
                             >Thời gian tập TB/giờ</label
                           >
-                          <div class=" col-11 col-sm-4">
+                          <div class="col-11 col-sm-4">
                             <select
                               name="gender"
                               id="gender"
                               class="form-control"
                             >
-                            <option value="">Lựa chọn</option>
+                              <option value="">Lựa chọn</option>
                               <option value="1">Có</option>
                               <option value="2">Không</option>
                             </select>
                           </div>
-                          <i
-                            class="far fa-check-circle"
-                          ></i>
+                          <i class="far fa-check-circle"></i>
                         </div>
                       </div>
                     </div>
@@ -1009,58 +1007,9 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.sticky.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/slick.min.js"></script>
+    <script src="js/main.js"></script>
 
-    <script>
-      $(document).ready(function () {
-        $(".image-link").magnificPopup({
-          type: "iframe",
-          src: $(this).attr("href"),
-        });
-        $(".slick_lists").slick({
-          arrows: true,
-          adaptiveHeight: true,
-          centerMode: true,
-          centerPadding: "0",
-          slidesToShow: 3,
-          responsive: [
-            {
-              breakpoint: 768,
-              settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: "0",
-                slidesToShow: 3,
-                autoplay: true,
-                autoplaySpeed: 3000,
-              },
-            },
-            {
-              breakpoint: 480,
-              settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: "0",
-                slidesToShow: 1,
-                autoplay: false,
-                autoplaySpeed: 3000,
-              },
-            },
-          ],
-        });
-      
-        $('.form-control').on('change',function(){
-          if($(this).val() != ""){
-            $(this).parents('.form-group').addClass('done');
-          }
-          else{
-            $(this).parents('.form-group').removeClass('done');
-          }
-        })
-      
-      
-      });
-    </script>
+    
   </body>
 </html>

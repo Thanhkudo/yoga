@@ -8,33 +8,29 @@
         $url_link = $block->url_link != '' ? $block->url_link : '';
         $url_link_title = $block->json_params->url_link_title->{$locale} ?? $block->url_link_title;
         $style = isset($block->json_params->style) && $block->json_params->style == 'slider-caption-right' ? 'd-none' : '';
-
+        
         // Filter all blocks by parent_id
         $block_childs = $blocks->filter(function ($item, $key) use ($block) {
             return $item->parent_id == $block->id;
         });
     @endphp
 
-    <div id="service" class="section page-section bg-transparent p-0 mt-0 clearfix">
-
-        <div class="row align-items-stretch clearfix bottommargin">
-
-            <!-- Service Image
-        ============================================= -->
-            <div class="col-lg-6 center col-padding parallax" style="background-image: url('{{ $image }}');"
-                data-bottom-top="background-position:0px 100px;" data-top-bottom="background-position:0px -300px;">
-                <div class="vertical-middle dark d-none">
-                    <div class="heading-block border-0 center">
-                        <h2 class="nott ls0" style="font-size: 54px">{{ $title }}</h2>
+    <section class="slide_content mt_page_title">
+        <div class="container">
+            <div class="box_title text-center mb-3 mb-lg-5">
+                <h2 class="title text-uppercase">{{ $title }}</h2>
+                <p class="bref">
+                    {!! $brief !!}
+                </p>
+            </div>
+            <div class="d-flex flex-wrap">
+                <div class="col-4 d-none d-md-block">
+                    <div class="img bf_img position-relative">
+                        <img src="{{ $image }}" alt="{{ $title }}" />
                     </div>
                 </div>
-            </div>
-
-            <!-- Service Featured Boxes
-        ============================================= -->
-            <div class="col-lg-6 col-padding" style="background-color: #F9F9F9">
-                <div>
-                    <div class="row clearfix" style="padding: 20px 0">
+                <div class="col-12 col-md-4">
+                    <div class="slick_content">
                         @if ($block_childs)
                             @foreach ($block_childs as $item)
                                 @php
@@ -47,26 +43,28 @@
                                     $icon = $item->icon != '' ? $item->icon : '';
                                     $style = $item->json_params->style ?? '';
                                 @endphp
-                                <div class="col-lg-10 col-md-8 bottommargin">
-                                    <div class="feature-box fbox-plain">
-                                        <div class="fbox-icon">
-                                            <img src="{{$image_child}}"
-                                                    alt="{{$title_child}}">
-                                        </div>
-                                        <div class="fbox-content">
-                                            <h3>{{$title_child}}</h3>
-                                            <p>{{$brief_child}}</p>
-                                        </div>
-                                    </div>
+                                <div class="items_content">
+                                    <p class="icon">
+                                        <i class="fas fa-quote-left fa-lg" style="color: #a9a9a7"></i>
+                                    </p>
+                                    <p class="name mt-2">{{$title_child}}</p>
+                                    <p class="bref mt-3">
+                                        {!!$brief_child!!}
+                                    </p>
                                 </div>
                             @endforeach
                         @endif
 
 
+
+                    </div>
+                </div>
+                <div class="col-4 d-none d-md-block">
+                    <div class="img p-4">
+                        <img src="{{ $image_background }}" alt="{{ $title }}" />
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
+    </section>
 @endif

@@ -96,7 +96,7 @@ class Consts
         'product' => 12,
         'resource' => 6,
         'related' => 6,
-        'sidebar' => 6,
+        'sidebar' => 4,
         'search' => 12,
         'other' => 6,
     ];
@@ -198,17 +198,17 @@ class Consts
             ],
             "show_route" => true
         ],
-        [
-            "title" => "Tìm kiếm",
-            "name" => "frontend.search",
-            "template" => [
-                [
-                    "title" => "Mặc định",
-                    "name" => "search.default"
-                ]
-            ],
-            "show_route" => true
-        ],
+        // [
+        //     "title" => "Tìm kiếm",
+        //     "name" => "frontend.search",
+        //     "template" => [
+        //         [
+        //             "title" => "Mặc định",
+        //             "name" => "search.default"
+        //         ]
+        //     ],
+        //     "show_route" => true
+        // ],
         [
             "title" => "Trang tùy chọn",
             "name" => "frontend.page",
@@ -221,17 +221,17 @@ class Consts
             "show_route" => true,
             "has_alias" => true
         ],
-        [
-            "title" => "Giỏ hàng",
-            "name" => "frontend.order.cart",
-            "template" => [
-                [
-                    "title" => "Default",
-                    "name" => "cart.default"
-                ]
-            ],
-            "show_route" => true,
-            "has_alias" => true
-        ]
+        // [
+        //     "title" => "Giỏ hàng",
+        //     "name" => "frontend.order.cart",
+        //     "template" => [
+        //         [
+        //             "title" => "Default",
+        //             "name" => "cart.default"
+        //         ]
+        //     ],
+        //     "show_route" => true,
+        //     "has_alias" => true
+        // ]
     ];
 }

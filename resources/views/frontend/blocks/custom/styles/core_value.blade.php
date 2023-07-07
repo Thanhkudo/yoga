@@ -8,55 +8,51 @@
         $url_link = $block->url_link != '' ? $block->url_link : '';
         $url_link_title = $block->json_params->url_link_title->{$locale} ?? $block->url_link_title;
         $style = isset($block->json_params->style) && $block->json_params->style == 'slider-caption-right' ? 'd-none' : '';
-
+        
         // Filter all blocks by parent_id
         $block_childs = $blocks->filter(function ($item, $key) use ($block) {
             return $item->parent_id == $block->id;
         });
     @endphp
-    <div id="price" class="section page-section parallax pb-0 mb-0 dark"
-        style="background-image: url('{{ $image_background }}'); background-size: cover; height: 600px"
-        data-bottom-top="background-position:0px 0px;" data-top-bottom="background-position:0px -300px;"></div>
 
-    <div class="container bottommargin dark clearfix" style="margin-top: -500px">
-        <div class="heading-block bottommargin-lg center clearfix">
-            <img src="{{ $image }}" alt="Image" height="40" style="margin-bottom: 20px">
-            <h2>{{ $title }}</h2>
-        </div>
 
-        <!-- Price Items
-     ============================================= -->
-        <div class="row dark col-padding clearfix" style="background-color: #121212">
-            @if ($block_childs)
-                @foreach ($block_childs as $item)
-                    @php
-                        $title_child = $item->json_params->title->{$locale} ?? $item->title;
-                        $brief_child = $item->json_params->brief->{$locale} ?? $item->brief;
-                        $content_child = $item->json_params->content->{$locale} ?? $item->content;
-                        $image_child = $item->image != '' ? $item->image : null;
-                        $url_link = $item->url_link != '' ? $item->url_link : 'javascript:void(0)';
-                        $url_link_title = $item->json_params->url_link_title->{$locale} ?? $item->url_link_title;
-                        $icon = $item->icon != '' ? $item->icon : '';
-                        $style = $item->json_params->style ?? '';
-                    @endphp
+    <section id="box_list" class="mb-5">
+        <div class="d-flex align-items-center justify-content-between padding w-100">
+            <div class="col-12 col-lg-6">
+                <div class="frame">
+                    @if ($block_childs)
+                        @foreach ($block_childs as $item)
+                            @php
+                                $title_child = $item->json_params->title->{$locale} ?? $item->title;
+                                $brief_child = $item->json_params->brief->{$locale} ?? $item->brief;
+                                $content_child = $item->json_params->content->{$locale} ?? $item->content;
+                                $image_child = $item->image != '' ? $item->image : null;
+                                $url_link = $item->url_link != '' ? $item->url_link : 'javascript:void(0)';
+                                $url_link_title = $item->json_params->url_link_title->{$locale} ?? $item->url_link_title;
+                                $icon = $item->icon != '' ? $item->icon : '';
+                                $style = $item->json_params->style ?? '';
+                            @endphp
 
-                    <div class="col-lg-6 price-wrap">
-                        <div class="price-header">
-                            <div class="price-name">
-                                {{ $title_child }}
+                            <div class="box_item">
+                                <div class="item">
+                                    <svg width="47" height="48" viewBox="0 0 47 48" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M23.5356 9.1351L11.7856 18.0716L23.5356 27.0081L11.7856 35.9446L0 26.9233L11.7767 17.9868L0 9.1351L11.7767 0.198608L23.5356 9.1351ZM11.7144 38.7538L23.4644 29.8173L35.2144 38.7538L23.4644 47.6903L11.7144 38.7538ZM23.5356 26.9233L35.2856 17.9868L23.5356 9.12449L35.2233 0.198608L47 9.1351L35.2233 18.0716L47 26.9975L35.2233 35.934L23.5356 26.9233Z"
+                                            fill="#C1E3E5" />
+                                    </svg>
+                                    <span class="text-uppercase">{{$title_child}}</span>
+                                </div>
                             </div>
-                            <div class="price-dots">
-                                <span class="separator-dots"></span>
-                            </div>
-                            <div class="price-price">{{ $brief_child }}</div>
-                        </div>
-                        <p class="price-desc">{!! $content_child !!}</p>
-                    </div>
-                @endforeach
-            @endif
-
-
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 d-none d-lg-flex box-img">
+                <div class="img">
+                    <img src="{{ $image }}" alt="{{ $title }}" />
+                </div>
+            </div>
         </div>
-
-    </div>
+    </section>
 @endif

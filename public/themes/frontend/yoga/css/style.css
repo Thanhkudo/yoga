@@ -22,9 +22,11 @@
   font-family: Montserrat;
   box-sizing: border-box;
 }
-.img img {
-  width: 100%;
-  height: 100%;
+img {
+  vertical-align: middle;
+  border-style: none;
+  max-width: 100%;
+  height: auto;
 }
 body {
   background-color: #fff;
@@ -128,8 +130,8 @@ a:hover {
 }
 @media (max-width: 991.98px) {
   .site-navbar {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 }
 .site-navbar .toggle-button {
@@ -146,6 +148,7 @@ a:hover {
   padding: 0;
   z-index: 3;
 }
+
 @media (max-width: 991.98px) {
   .site-navbar .site-logo {
     float: left;
@@ -574,13 +577,7 @@ a:hover {
   width: 100%;
   height: 1000px;
 }
-.carousel-item {
-  background: url(../images/banner.png);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100%;
-}
+
 #slider .font-playball {
   font-size: 82px;
   font-weight: 400;
@@ -588,6 +585,9 @@ a:hover {
 }
 #slider .title {
   font-size: 82px;
+}
+#slider .title span {
+  color: #fff;
 }
 #slider .content {
   font-size: 28px;
@@ -604,20 +604,22 @@ a:hover {
   height: 44px;
   left: 30px;
   bottom: 60px;
-}
-.carousel-item .btn-play img {
   cursor: pointer;
+  z-index: 10;
 }
+.carousel-item .btn-play svg {
+  width: 100%;
+  height: 100%;
+}
+
 .box_btn .btn {
   width: 200px;
   font-size: 16px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .introduce .bg {
-  background: url(../images/bg_nguoi.png);
-  background-size: 100% 100%;
-  padding: 70px 150px 50px;
   position: relative;
+  padding: 70px 150px 50px;
 }
 .introduce .img img {
   width: 100%;
@@ -635,10 +637,12 @@ a:hover {
   bottom: 50px;
   z-index: 1;
 }
+
 .introduce .title {
-  font-size: 65px;
+  font-size: 50px;
   font-weight: 500;
 }
+
 .introduce .content {
   position: relative;
   margin-top: 120px;
@@ -879,13 +883,7 @@ a:hover {
 }
 
 /* giới thiệu */
-.about_us .bg_page {
-  background: url(../images/banner2.png);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  height: calc(100vh - 180px);
-  max-height: 570px;
-}
+
 .mt_page_title {
   margin-top: 150px;
 }
@@ -918,13 +916,7 @@ a:hover {
   left: unset;
 }
 /* khóa học */
-.learning .bg_page {
-  background: url(../images/banner3.png);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  height: calc(100vh - 180px);
-  max-height: 570px;
-}
+
 .box_learning {
   padding-top: 140px;
 }
@@ -942,13 +934,7 @@ a:hover {
   margin: unset;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.learning_detail .bg_page {
-  background: url(../images/banner4.png);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  height: calc(100vh - 180px);
-  max-height: 570px;
-}
+
 /* chi tiết khóa học */
 .box_form {
   border-radius: 20px;
@@ -1056,9 +1042,116 @@ a:hover {
   top: 0px;
   z-index: -1;
 }
+.frame-box-video iframe {
+  width: 100%;
+  min-height: 740px;
+}
+.slider-nav {
+  width: 80%;
+  margin: auto;
+}
+.slider-nav .slick-prev {
+  left: -60px;
+}
+.slider-nav .slick-next {
+  right: -60px;
+}
+.slider-nav .slick-prev:before {
+  content: url(../images/icon_pre_green.svg);
+}
+.slider-nav .slick-next:before {
+  content: url(../images/icon_nex_green.svg);
+}
+.frame-box-img {
+  position: relative;
+}
+.frame-box-img::before {
+  content: "";
+  background: url(../images/ic_play_video.png);
+  background-size: 100% auto;
+  width: 20%;
+  height: 30%;
+  border-radius: 50%;
+  position: absolute;
+  left: calc(50% - 10%);
+  bottom: calc(50% - 15%);
+  z-index: 5;
+}
+.custom-slide {
+  position: relative;
+  z-index: 1;
+  border-radius: 30px;
+}
+.btn-contact {
+  min-width: 246px;
+  height: 55px;
+  font-size: 24px;
+  border-radius: 30px;
+  background: #282829;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.box-contact-item {
+  font-size: 28px;
+}
+a p {
+  color: #000;
+}
 
-
-
+.blog_noibat .blog_content .item .post-thumb {
+  width: 125px;
+  margin-right: 15px;
+}
+.blog_noibat .blog_content .item .post-thumb img {
+  border-radius: 8px;
+}
+.blog_noibat .blog_content .item {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+.blog_noibat .blog_content .item .contentright {
+  width: calc(100% - 140px);
+}
+.blog_noibat .blog_content .item .contentright .post-title a{
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+.post-image img {
+  border-radius: 14px;
+}
+.article-main .article-title {
+  margin-top: 0px;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-family: "Mulish",sans-serif;
+  font-weight: bold;
+  color: #4d4d4d;
+  line-height: 36px;
+  float: left;
+  width: 100%;
+  position: relative;
+}
+.article-main .time_post {
+  font-family: "Mulish",sans-serif;
+  font-size: 14px;
+  width: 100%;
+  float: left;
+  display: block;
+  margin-bottom: 20px;
+  color: #808080;
+}
+@media screen and (max-width: 1300px) {
+  .box-sologen .text {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 1024) {
+  .box-sologen .text {
+    font-size: 20px;
+  }
+}
 @media screen and (max-width: 576px) {
   .carousel-inner {
     width: 100%;
@@ -1109,7 +1202,7 @@ a:hover {
     font-size: 20px;
   }
   #box_form .box_bg {
-    background: unset;
+    background: unset !important;
   }
   #box_list .padding {
     padding: unset;
@@ -1182,14 +1275,7 @@ a:hover {
     margin-top: 40px;
   }
   /* giới thiệu */
-  .about_us .bg_page {
-    background: url(../images/banner2_mb.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: calc(100vh - 110px);
-  }
-  
+
   .about_us .items {
     padding-top: 20px;
     padding-bottom: 30px;
@@ -1212,13 +1298,7 @@ a:hover {
     margin-top: 30px;
   }
   /* khóa học */
-  .learning .bg_page {
-    background: url(../images/banner3_mb.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: calc(100vh - 110px);
-  }
+
   .box_items .items {
     padding: 0px 10px;
     margin-bottom: 40px;
@@ -1229,23 +1309,30 @@ a:hover {
   .slick_items .content {
     padding-left: 25px;
   }
-  .learning_detail .bg_page {
-    background: url(../images/banner4_mb.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: calc(100vh - 110px);
-  }
+
   .bd_l {
     border-left: none;
   }
   .section-container {
     width: 100%;
   }
-  .items_content .name{
+  .items_content .name {
     font-size: 20px;
   }
-  .items_content .bref{
+  .items_content .bref {
     font-size: 18px;
+  }
+  .frame-box-video iframe {
+    min-height: 315px;
+  }
+  .slider-nav {
+    width: 80%;
+    margin: auto;
+  }
+  .slider-nav .slick-prev {
+    left: -20px;
+  }
+  .slider-nav .slick-next {
+    right: -20px;
   }
 }

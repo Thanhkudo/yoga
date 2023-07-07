@@ -74,7 +74,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
-                                <div class="row">
+                                <div class="d-flex flex-wrap">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>@lang('Name')</label>
@@ -126,7 +126,7 @@
                                             <textarea type="text" class="form-control" name="description" placeholder="@lang('Description')">{{ old('description') ?? $detail->description }}</textarea>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>@lang('SEO Open Graph image')</label>
@@ -235,7 +235,7 @@
                                             @lang('Selected Blocks')
                                         </h4>
                                         <div class="dd checkbox_list" id="nastb_selected">
-                                            @if(count($block_selected) > 0)
+                                            @if (count($block_selected) > 0)
                                                 <ol class=" dd-list">
                                                     @foreach ($block_selected as $item)
                                                         <li class="dd-item" data-id="{{ $item->id }}">
@@ -254,35 +254,19 @@
                                             @lang('Available Blocks')
                                         </h4>
                                         <div class="dd checkbox_list" id="nastb_available">
-                                            @php
-                                                $available = 0;
-                                            @endphp
-                                            <ol class=" dd-list" id="block_available">
 
-                                                @foreach ($blockContents as $item)
-                                                    @if (!in_array($item->id, $detail->json_params->block_content ?? []))
-                                                        @php
-                                                            $available++;
-                                                        @endphp
-                                                        <li class="dd-item" data-id="{{ $item->id }}">
-                                                            {{-- <input name="json_params[block_content][]" type="checkbox"
-                                                                value="{{ $item->id }}"
-                                                                class="mr-15 block_item cursor"
-                                                                id="block_content_{{ $item->id }}"
-                                                                autocomplete="off"> --}}
-                                                            <div class="dd-handle ">
-                                                                <strong>{{ __($item->title) . ' (' . $item->block_name . ')' }}</strong>
-                                                            </div>
-                                                        </li>
-                                                    @else
-                                                    @endif
-                                                @endforeach
-                                                <li class="dd-placeholder hidden">
-
-                                                </li>
-                                            </ol>
-                                            @if ($available == 0)
-                                                <div class="dd-empty"></div>
+                                            @if (count($blockContents) > 0)
+                                                <ol class=" dd-list">
+                                                    @foreach ($blockContents as $item)
+                                                        @if (!in_array($item->id, $detail->json_params->block_content ?? []))
+                                                            <li class="dd-item" data-id="{{ $item->id }}">
+                                                                <div class="dd-handle ">
+                                                                    <strong>{{ __($item->title) . ' (' . $item->block_name . ')' }}</strong>
+                                                                </div>
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
+                                                </ol>
                                             @endif
                                         </div>
 

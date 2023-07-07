@@ -16,6 +16,8 @@
 <script src="{{ asset('themes/admin/plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('themes/admin/js/app.min.js') }}"></script>
+<script src="{{ asset('themes/admin/plugins/nestable/jquery.nestable.min.js') }}"></script>
+
 
 <script>
   $(".select2").select2();

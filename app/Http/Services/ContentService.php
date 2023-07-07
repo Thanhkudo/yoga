@@ -158,8 +158,9 @@ class ContentService
     public static function getCmsPost($params, $isPaginate = false)
     {
 
-        $query = CmsPost::selectRaw('tb_cms_posts.*, tb_cms_taxonomys.title AS taxonomy_title, tb_cms_taxonomys.taxonomy AS taxonomy, tb_cms_taxonomys.json_params AS taxonomy_json_params, tb_cms_taxonomys.alias AS taxonomy_alias')
+        $query = CmsPost::selectRaw('tb_cms_posts.*, admins.name,tb_cms_taxonomys.title AS taxonomy_title, tb_cms_taxonomys.taxonomy AS taxonomy, tb_cms_taxonomys.json_params AS taxonomy_json_params, tb_cms_taxonomys.alias AS taxonomy_alias')
             ->Join('tb_cms_taxonomys', 'tb_cms_taxonomys.id', '=', 'tb_cms_posts.taxonomy_id')
+            ->LeftJoin('admins', 'admins.id', '=', 'tb_cms_posts.admin_updated_id')
 
             ->when(!empty($params['keyword']), function ($query) use ($params) {
                 $keyword = $params['keyword'];

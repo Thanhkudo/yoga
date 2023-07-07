@@ -83,9 +83,11 @@ class BlockContentController extends Controller
 
         $params['admin_created_id'] = Auth::guard('admin')->user()->id;
         $params['admin_updated_id'] = Auth::guard('admin')->user()->id;
-
+        
         BlockContent::create($params);
-
+        if(isset($params['parent_id'])){
+            return redirect()->back()->with('successMessage', __('Add new successfully!'));
+        }
         return redirect()->route($this->routeDefault . '.index')->with('successMessage', __('Add new successfully!'));
     }
 
@@ -124,7 +126,7 @@ class BlockContentController extends Controller
         $this->responseData['child'] = $child;
         $this->responseData['detail'] = $blockContent;
         $this->responseData['parents_child'] = $parents_child;
-        return $this->responseView($this->viewPart . '.edit');
+        return $this->responseView($this->viewPart . '.edit.'.$blockContent->block_code);
     }
 
     /**

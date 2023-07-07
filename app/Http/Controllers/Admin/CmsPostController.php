@@ -137,7 +137,6 @@ class CmsPostController extends Controller
 
         $params = $request->all();
         $params['alias'] = Str::slug($params['alias'] ?? $params['title']);
-
         $params['admin_updated_id'] = Auth::guard('admin')->user()->id;
 
         $cmsPost->fill($params);

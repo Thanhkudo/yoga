@@ -2,8 +2,10 @@
 
 @php
     $page_title = $taxonomy->title ?? ($page->title ?? $page->name);
-    $image_background = $taxonomy->json_params->image_background ?? ($web_information->image->background_breadcrumbs ?? '');
+    $image = $taxonomy->json_params->image ?? null;
+    $image_background = $taxonomy->json_params->image_background ?? null;
     $brief = $taxonomy->json_params->brief->{$locale} ?? $taxonomy->taxonomy;
+    $content = $taxonomy->json_params->content->{$locale} ?? $taxonomy->content;
     
     $title = $taxonomy->json_params->title->{$locale} ?? ($taxonomy->title ?? null);
     $image = $taxonomy->json_params->image ?? null;
@@ -15,170 +17,93 @@
     $params_taxonomy['taxonomy'] = App\Consts::TAXONOMY['product'];
     $taxonomys = App\Http\Services\ContentService::getCmsTaxonomy($params_taxonomy)->get();
     
+    if ($agent->isDesktop() && $image_background != null) {
+        $image_for_screen = $image_background;
+    } else {
+        $image_for_screen = $image != null ? $image : $web_information->image->background_breadcrumbs ?? '';
+    }
 @endphp
-@push('style')
-    <style>
-        .breadcrumb_background {
-            background-image: url({{ $image_background }});
-            position: relative;
-            justify-content: center;
-            text-align: center;
-            align-items: center;
-            min-height: 202px;
-            flex-flow: column;
-            display: flex;
-            position: relative;
-            padding-top: 30px
-        }
-    </style>
-@endpush
+
+
 @section('content')
     {{-- Print all content by [module - route - page] without blocks content at here --}}
-    <div class="bodywrap">
-        <div class="breadcrumb_background">
-            <div class="title_full">
-                <div class="container a-center">
-                    <h1 class="title_page">{{ $brief }}</h1>
-                </div>
-            </div>
-
-            <section class="bread-crumb">
-                <span class="crumb-border"></span>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-12 a-left">
-                            <ul class="breadcrumb">
-                                <li class="home">
-                                    <a href="/"><span>Trang chủ</span></a>
-                                    <span class="mr_lr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                                            <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                            <path
-                                                d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z" />
-                                        </svg></span>
-                                </li>
-                                <li>
-                                    <strong><span> {{ $brief }}</span></strong>
-                                </li>
-                            </ul>
+    <div class="container">
+        <section id="slider" class="">
+            <div id="title" class="page-title">
+                <div class="bg_page"
+                    style="background: url({{ $image_for_screen }});
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            height: calc(100vh - 180px);
+            max-height: 570px;">
+                    <div class="container d-flex justify-content-md-end">
+                        <div class="col-12 col-md-6 mt_page_title">
+                            <h2 class="title">
+                                <p class="font-playball grey">{{ $page_title }}</p>
+                                <span class="green">YOGA</span> STUDIO
+                            </h2>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
-        <div class="layout-collection bg_before">
-            <div class="container">
-                <div class="row">
-                    <div class="block-collection col-12">
-                        <h1 class="title-page d-none">{{ $brief }}</h1>
-                        <div class="category-products">
-                            <div class="col_sortby clearfix">
-                                <div class="title_sortby f-left">
-                                    <h2 class="collection-title">{{ $brief }}</h2>
-                                </div>
-                                <div class="arrange_sortby d-none">
-                                    <div id="sort-by">
-                                        <ul class="ul_col">
-                                            <li>
-                                                <span class="ico">Sắp xếp theo:</span>
-                                                <ul class="content_ul">
-                                                    <li>
-                                                        <a href="javascript:;" onclick="sortby('default')">Mặc định</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;" onclick="sortby('alpha-asc')">A &rarr;
-                                                            Z</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;" onclick="sortby('alpha-desc')">Z &rarr;
-                                                            A</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;" onclick="sortby('price-asc')">Giá tăng
-                                                            dần</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;" onclick="sortby('price-desc')">Giá giảm
-                                                            dần</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;" onclick="sortby('created-desc')">Hàng mới
-                                                            nhất</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;" onclick="sortby('created-asc')">Hàng cũ
-                                                            nhất</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+            </div>
+        </section>
+        <section id="course" class="mb-5 box_learning"
+            style="background: url({{ url('data/cms-image/images/bg_learning1.png') }}); 
+        background-size: 100% 100%;
+        background-repeat: no-repeat;">
+            <div class="box_title text-center mb-3 mb-lg-5">
+                <h2 class="title text-uppercase">{{ $brief }}</h2>
+                <p class="bref">
+                    {{ $content }}
+                </p>
+            </div>
+            <div class="box_slick">
+                <div class="box_items d-flex flex-wrap justify-content-around">
+                    @foreach ($posts as $item)
+                        @php
+                            $title = $item->json_params->title->{$locale} ?? $item->title;
+                            $brief = $item->json_params->brief->{$locale} ?? $item->brief;
+                            $price = $item->json_params->price ?? '0';
+                            $image = $item->image_thumb != '' ? $item->image_thumb : ($item->image != '' ? $item->image : null);
+                            
+                            $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->taxonomy_alias ?? $item->taxonomy_title, $item->taxonomy_id);
+                            $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->alias ?? $title, $item->id, 'detail', $item->taxonomy_title);
+                        @endphp
+                        <div class="items col-12 col-md-6 col-lg-4">
+                            <div class="slick_items">
+                                <div class="box bora-30">
+                                    <h3 class="title text-center text-uppercase">
+                                        {{ $title }}
+                                    </h3>
+                                    <hr class="line" />
+                                    <div class="money text-center"><sup>$</sup>{{ $price }}</div>
+                                    <div class="content">
+                                        {!! $brief !!}
+                                    </div>
+
+                                    <div class="box_btn text-center">
+                                        <a href="{{ $alias }}"><button
+                                                class="btn bg_green text-uppercase bora-30 text-uppercase">
+                                                xem chi tiêt
+                                                <svg class="cl_svg" width="16" height="12" viewBox="0 0 16 12"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M7.74295 6.32127L2.76404 11.0168C2.41991 11.3413 1.86345 11.3413 1.52298 11.0168L0.695598 10.2365C0.351467 9.91194 0.351467 9.38715 0.695598 9.06606L4.22477 5.73778L0.695598 2.40951C0.351467 2.08497 0.351467 1.56018 0.695598 1.23909L1.51932 0.451902C1.86345 0.127361 2.41991 0.127361 2.76038 0.451902L7.73929 5.1474C8.08709 5.47194 8.08709 5.99673 7.74295 6.32127ZM14.772 5.1474L9.79309 0.451902C9.44896 0.127361 8.8925 0.127361 8.55203 0.451902L7.72465 1.23218C7.38052 1.55672 7.38052 2.08151 7.72465 2.4026L11.2538 5.73088L7.72465 9.05915C7.38052 9.3837 7.38052 9.90849 7.72465 10.2296L8.55203 11.0099C8.89616 11.3344 9.45262 11.3344 9.79309 11.0099L14.772 6.31436C15.1161 5.99673 15.1161 5.47194 14.772 5.1474Z"
+                                                        fill="white" />
+                                                </svg>
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="products-view products-view-grid list_hover_pro">
-                                <div class="row">
-                                    @foreach ($posts as $item)
-                                        @php
-                                            $title = $item->json_params->title->{$locale} ?? $item->title;
-                                            $brief = $item->json_params->brief->{$locale} ?? $item->brief;
-                                            $price = $item->json_params->price ?? '0';
-                                            $image = $item->image_thumb != '' ? $item->image_thumb : ($item->image != '' ? $item->image : null);
-                                            
-                                            $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->taxonomy_alias ?? $item->taxonomy_title, $item->taxonomy_id);
-                                            $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->alias ?? $title, $item->id, 'detail', $item->taxonomy_title);
-                                        @endphp
-                                        <div class="col-6 col-md-4 col-lg-4 col-xl-4">
-                                            <div class="item_product_main">
-                                                <div class="wishItem variants product-box product-block-item">
-                                                    <div class="product-thumbnail">
-                                                        <a class="image_thumb scale_hover product-transition"
-                                                            href="{{$alias}}" title="{{$title}}">
-                                                            <img class="lazyload"
-                                                                src="{{ asset('images/load.gif') }}"
-                                                                data-src="{{$image}}"
-                                                                alt="{{$title}}" />
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-info">
-                                                        <div class="product-content">
-                                                            <h3 class="product-name">
-                                                                <a href="{{$alias}}" title="{{$title}}">{{$title}}</a>
-                                                            </h3>
-                                                            <div class="blockprice">
-                                                                <div class="price-box">
-                                                                    {{ $price ? number_format($price, 0, ',', '.') : '0' }}₫
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-action d-xl-flex d-none">
-                                                        <button
-                                                            class="cart-button btn-buy firstb btn-cart button_35 left-to muangay btn-cart btn-views add-to-cart" 
-                                                            data-id="{{ $item->id }}" data-quantity="1" title="Mua hàng">
-                                                            <svg width="29" height="29" viewBox="0 0 29 29"
-                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path
-                                                                    d="M19.9381 25.6016C19.9381 27.4755 21.4626 29 23.3365 29C25.2104 29 26.735 27.4755 26.735 25.6016C26.735 23.7277 25.2104 22.2031 23.3365 22.2031C21.4626 22.2031 19.9381 23.7277 19.9381 25.6016ZM23.3365 24.4688C23.9612 24.4688 24.4693 24.9769 24.4693 25.6016C24.4693 26.2262 23.9612 26.7344 23.3365 26.7344C22.7119 26.7344 22.2037 26.2262 22.2037 25.6016C22.2037 24.9769 22.7119 24.4688 23.3365 24.4688ZM6.57091 25.6016C6.57091 27.4755 8.09545 29 9.96935 29C11.8432 29 13.3678 27.4755 13.3678 25.6016C13.3678 23.7277 11.8432 22.2031 9.96935 22.2031C8.09545 22.2031 6.57091 23.7277 6.57091 25.6016ZM9.96935 24.4688C10.594 24.4688 11.1022 24.9769 11.1022 25.6016C11.1022 26.2262 10.594 26.7344 9.96935 26.7344C9.34471 26.7344 8.83653 26.2262 8.83653 25.6016C8.83653 24.9769 9.34471 24.4688 9.96935 24.4688ZM13.3678 11.1016H11.1022V17.6719H13.3678V11.1016ZM6.57091 6.57031V3.39844C6.57091 1.52454 5.04637 0 3.17247 0H0.00195312V2.26562H3.17241C3.79705 2.26562 4.30522 2.7738 4.30522 3.39844V16.5391C4.30522 19.6622 6.84612 22.2031 9.96929 22.2031H23.3365C26.4596 22.2031 29.0005 19.6622 29.0005 16.5391V6.57031H6.57091ZM26.735 16.5391C26.735 18.413 25.2104 19.9375 23.3365 19.9375H9.96935C8.09545 19.9375 6.57091 18.413 6.57091 16.5391V8.83594H26.735V16.5391ZM17.899 11.1016H15.6334V17.6719H17.899V11.1016ZM22.4303 11.1016H20.1647V17.6719H22.4303V11.1016Z"
-                                                                    fill="#A1CCA3" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            {{ $posts->withQueryString()->links('frontend.pagination.default') }}
                         </div>
-                    </div>
+                    @endforeach
+
+
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-
-
-
 
     {{-- End content --}}
 @endsection

@@ -9,61 +9,188 @@
     $url_link_title = $block->json_params->url_link_title->{$locale} ?? $block->url_link_title;
     
   @endphp
-  <div class="section m-0 border-bottom" id="form-order"
-    style="background: url('{{ $background }}') no-repeat center center; background-size: cover; padding: 100px 0;">
-    <div class="container">
-      <div class="row justify-content-between align-items-center">
+  
 
-        <div class="col-md-6">
-          <div class="heading-block border-bottom-0 bottommargin-sm">
-            <div class="badge rounded-pill badge-default">{{ $title }}</div>
-            <h2 class="nott ls0">{!! nl2br($brief) !!}</h2>
-          </div>
-          <p>{!! nl2br($content) !!}</p>
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h2 class="mb-3">ĐĂNG KÝ BÁO GIÁ</h2>
-              <div class="">
-                <div class="form-result"></div>
-                <form class="row mb-0 form_ajax" id="template-contactform" name="template-contactform"
-                  action="{{ route('frontend.contact.store') }}" method="post">
-                  @csrf
-                  <div class="col-12 form-group mb-3">
-                    <label for="name">@lang('Fullname') *</label>
-                    <input type="text" id="name" name="name" class="form-control input-sm required"
-                      value="" required>
+  <section id="box_form" class="mb-5 pt-lg-5">
+    <div class="box_title text-center mb-3 mb-lg-5">
+      <h2 class="title text-uppercase">{{$title}}</h2>
+      <p class="bref">
+        {{$brief}}
+      </p>
+    </div>
+    <div class="bg_grey p-3 p-lg-5">
+      <div class="box_bg d-flex justify-content-end" style="background: url({{$background}});background-size:  100% 100% ;background-repeat:  no-repeat">
+        <div class="frame_form col-12 col-lg-7">
+          <form class="form_ajax" action="{{ route('frontend.contact.store') }}" method="post">
+            @csrf
+            <input type="hidden" name="is_type" value="contact">
+            <div class="row bd_bottom justify-content-between">
+              <div class="col-12 col-sm-5">
+                <div class="form-group row align-items-center mb-lg-4">
+                  <label for="height" class="col-sm-5 col-form-label"
+                    >@lang('Chều cao(Cm)')</label
+                  >
+                  <div class="col-11 col-sm-6">
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="json_params[height]"
+                      min="1"
+                      id="height"
+                      value=""
+                    />
                   </div>
-                  <div class="col-12 form-group mb-3">
-                    <label for="phone">@lang('phone') *</label>
-                    <input type="text" id="phone" name="phone" class="form-control input-sm required"
-                      value="" required>
+                  <i class="far fa-check-circle"></i>
+                </div>
+                <div class="form-group row align-items-center mb-lg-4">
+                  <label for="weight" class="col-sm-5 col-form-label"
+                    >@lang('Cân nặng(Kg)')</label
+                  >
+                  <div class="col-11 col-sm-6">
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="json_params[weight]"
+                      min="1"
+                      id="weight"
+                      value=""
+                    />
                   </div>
-                  <div class="col-12 form-group mb-3">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-control input-sm" value="">
+                  <i class="far fa-check-circle"></i>
+                </div>
+                <div class="form-group row align-items-center mb-lg-4">
+                  <label for="gender" class="col-sm-5 col-form-label"
+                    >@lang('Giới tính')</label
+                  >
+                  <div class="col-11 col-sm-6">
+                    <select
+                      name="json_params[gender]"
+                      id="gender"
+                      class="form-control"
+                    >
+                      <option value="">@lang('Lựa chọn')</option>
+                      <option value="1">Nữ</option>
+                      <option value="2">Nam</option>
+                    </select>
                   </div>
-                  <div class="col-12 form-group mb-4">
-                    <label for="content">@lang('Content')</label>
-                    <textarea type="text" id="content" name="content" class="form-control input-sm required" value=""></textarea>
+                  <i class="far fa-check-circle"></i>
+                </div>
+                <div class="form-group row align-items-center mb-lg-4">
+                  <label for="year" class="col-sm-5 col-form-label"
+                    >@lang('Năm sinh')</label
+                  >
+                  <div class="col-11 col-sm-6">
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="json_params[year]"
+                      min="1"
+                      id="year"
+                      value=""
+                    />
                   </div>
-                  <div class="col-12 form-group mb-0">
-                    <button
-                      class="button button-border button-rounded button-fill button-blue w-100 m-0 ls0 text-uppercase"
-                      type="submit" id="submit" name="submit" value="submit">
-                      <span>Gửi đăng ký</span>
-                    </button>
+                  <i class="far fa-check-circle"></i>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group row align-items-center mb-lg-4">
+                  <label for="height" class="col-sm-6 col-form-label"
+                    >@lang('Bạn từng học Yoga')</label
+                  >
+                  <div class="col-11 col-sm-4">
+                    <select
+                      name="json_params[studied]"
+                      
+                      class="form-control"
+                    >
+                      <option value="">@lang('Lựa chọn')</option>
+                      <option value="1">Có</option>
+                      <option value="2">Không</option>
+                    </select>
                   </div>
-
-                  <input type="hidden" name="is_type" value="call_request">
-                </form>
+                  <i class="far fa-check-circle"></i>
+                </div>
+                <div class="form-group row align-items-center mb-lg-4">
+                  <label for="weight" class="col-sm-6 col-form-label"
+                    >Bạn có chấn thương</label
+                  >
+                  <div class="col-11 col-sm-4">
+                    <select
+                      name="json_params[is_injury]"
+                      
+                      class="form-control"
+                    >
+                      <option value="">@lang('Lựa chọn')</option>
+                      <option value="1">Có</option>
+                      <option value="2">Không</option>
+                    </select>
+                  </div>
+                  <i class="far fa-check-circle"></i>
+                </div>
+                <div class="form-group row align-items-center mb-lg-4">
+                  <label for="gender" class="col-sm-6 col-form-label"
+                    >@lang('Bạn có gặp bệnh lý')</label
+                  >
+                  <div class="col-11 col-sm-4">
+                    <select
+                      name="json_params[is_sick]"
+                      class="form-control"
+                    >
+                      <option value="">@lang('Lựa chọn')</option>
+                      <option value="1">Có</option>
+                      <option value="2">Không</option>
+                    </select>
+                  </div>
+                  <i class="far fa-check-circle"></i>
+                </div>
+                <div class="form-group row align-items-center mb-lg-4">
+                  <label for="year" class="col-sm-6 col-form-label"
+                    >@lang('Thời gian tập TB/giờ')</label
+                  >
+                  <div class="col-11 col-sm-4">
+                    <select
+                      name="json_params[time]"
+                      class="form-control"
+                    >
+                      <option value="">@lang('Lựa chọn')</option>
+                      <option value="1">Có</option>
+                      <option value="2">Không</option>
+                    </select>
+                  </div>
+                  <i class="far fa-check-circle"></i>
+                </div>
               </div>
             </div>
-          </div>
+            <hr class="line" />
+            <p class="device-width">
+              {!!$content!!}
+            </p>
+            <div class="form-group row">
+              <div class="form-group col-12 col-sm-5">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  placeholder="Họ và tên"
+                  value=""
+                />
+              </div>
+              <div class="form-group col-12 col-sm-5">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="phone"
+                  placeholder="Số điện thoại"
+                  value=""
+                />
+              </div>
+              <div class="form-group col-12 col-sm-2 text-center">
+                <input type="submit" class="btn btn-dark" value="Gửi" />
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 @endif

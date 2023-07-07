@@ -1,13 +1,11 @@
-<link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Roboto:300,400,500,700|Rubik:400,600&amp;display=swap"
-    rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&amp;display=swap"
-    rel="stylesheet" />
-<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/maison/css/bootstrap.css')); ?>" type="text/css" />
-<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/maison/main.css')); ?>" />
-<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/maison/style.css')); ?>" />
-<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/maison/css/magnific-popup.css')); ?>" type="text/css" />
-<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/maison/collection_style.css')); ?>" type="text/css" />
-
+<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/all.min.css')); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/fonts/icomoon/style.css')); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/owl.carousel.min.css')); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/bootstrap.min.css')); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/magnific-popup.css')); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/slick.css')); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/slick-theme.css')); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/style.css')); ?>" type="text/css" />
 
 
 <style>

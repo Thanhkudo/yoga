@@ -69,7 +69,7 @@
 
             <div class="tab-content">
               <div class="tab-pane active" id="tab_1">
-                <div class="row">
+                <div class="d-flex flex-wrap">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>@lang('Parent element')</label>

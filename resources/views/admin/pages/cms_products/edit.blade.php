@@ -58,16 +58,16 @@
                                     <h5>Thông tin chính <span class="text-danger">*</span></h5>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="#tab_2" data-toggle="tab">
                                     <h5>@lang('Gallery Image')</h5>
                                 </a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="#tab_3" data-toggle="tab">
                                     <h5>@lang('Related Products')</h5>
                                 </a>
-                            </li>
+                            </li> --}}
                             <button type="submit" class="btn btn-primary btn-sm pull-right">
                                 <i class="fa fa-floppy-o"></i>
                                 @lang('Save')
@@ -76,7 +76,7 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
-                                <div class="row">
+                                <div class="d-flex flex-wrap">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>@lang('Product category') <small class="text-red">*</small></label>
@@ -185,20 +185,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>@lang('Brand')</label>
-                                            <input type="text" class="form-control" name="json_params[brand]"
-                                                placeholder="@lang('Brand')" value="{{ $detail->json_params->brand??"" }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>@lang('Order')</label>
-                                            <input type="number" class="form-control" name="iorder"
-                                                placeholder="@lang('Order')" value="{{ $detail->iorder }}">
-                                        </div>
-                                    </div>
+                                 
 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -242,7 +229,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                      
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>@lang('Order')</label>
+                                            <input type="number" class="form-control" name="iorder"
+                                                placeholder="@lang('Order')" value="{{ $detail->iorder }}">
+                                        </div>
+                                    </div>
                                     
 
                                     <div class="col-md-12">
