@@ -48,6 +48,7 @@
                     <h2 class="title-page">{{ $title }}</h2>
                     <div class="list-blogs">
                         <div class="d-flex flex-wrap clearfix">
+                            
                             @foreach ($posts as $item)
                                 @php
                                     $title = $item->json_params->title->{$locale} ?? $item->title;
@@ -78,8 +79,8 @@
                                     </div>
                                 </div>
                             @endforeach
-
                         </div>
+                        
                         {{ $posts->withQueryString()->links('frontend.pagination.default') }}
 
                     </div>

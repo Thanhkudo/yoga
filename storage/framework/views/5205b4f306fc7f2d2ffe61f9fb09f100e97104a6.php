@@ -24,7 +24,7 @@
         <div class="frame_form col-12 col-lg-7">
           <form class="form_ajax" action="<?php echo e(route('frontend.contact.store')); ?>" method="post">
             <?php echo csrf_field(); ?>
-            <input type="hidden" name="is_type" value="contact">
+            <input type="hidden" name="is_type" value="call_request">
             <div class="row bd_bottom justify-content-between">
               <div class="col-12 col-sm-5">
                 <div class="form-group row align-items-center mb-lg-4">
@@ -69,9 +69,9 @@
                       id="gender"
                       class="form-control"
                     >
-                      <option value=""><?php echo app('translator')->get('Lựa chọn'); ?></option>
-                      <option value="1">Nữ</option>
-                      <option value="2">Nam</option>
+                      <option value=""><?php echo app('translator')->get('Please select'); ?></option>
+                      <option value="male"><?php echo app('translator')->get('Male'); ?></option>
+                      <option value="female"><?php echo app('translator')->get('Female'); ?></option>
                     </select>
                   </div>
                   <i class="far fa-check-circle"></i>
@@ -104,9 +104,9 @@
                       
                       class="form-control"
                     >
-                      <option value=""><?php echo app('translator')->get('Lựa chọn'); ?></option>
-                      <option value="1">Có</option>
-                      <option value="2">Không</option>
+                      <option value=""><?php echo app('translator')->get('Please select'); ?></option>
+                      <option value="yes"><?php echo app('translator')->get('Yes'); ?></option>
+                      <option value="no"><?php echo app('translator')->get('No'); ?></option>
                     </select>
                   </div>
                   <i class="far fa-check-circle"></i>
@@ -121,9 +121,9 @@
                       
                       class="form-control"
                     >
-                      <option value=""><?php echo app('translator')->get('Lựa chọn'); ?></option>
-                      <option value="1">Có</option>
-                      <option value="2">Không</option>
+                      <option value=""><?php echo app('translator')->get('Please select'); ?></option>
+                      <option value="yes"><?php echo app('translator')->get('Yes'); ?></option>
+                      <option value="no"><?php echo app('translator')->get('No'); ?></option>
                     </select>
                   </div>
                   <i class="far fa-check-circle"></i>
@@ -137,9 +137,9 @@
                       name="json_params[is_sick]"
                       class="form-control"
                     >
-                      <option value=""><?php echo app('translator')->get('Lựa chọn'); ?></option>
-                      <option value="1">Có</option>
-                      <option value="2">Không</option>
+                      <option value=""><?php echo app('translator')->get('Please select'); ?></option>
+                      <option value="yes"><?php echo app('translator')->get('Yes'); ?></option>
+                      <option value="no"><?php echo app('translator')->get('No'); ?></option>
                     </select>
                   </div>
                   <i class="far fa-check-circle"></i>
@@ -153,9 +153,9 @@
                       name="json_params[time]"
                       class="form-control"
                     >
-                      <option value=""><?php echo app('translator')->get('Lựa chọn'); ?></option>
-                      <option value="1">Có</option>
-                      <option value="2">Không</option>
+                      <option value=""><?php echo app('translator')->get('Please select'); ?></option>
+                      <option value="yes"><?php echo app('translator')->get('Yes'); ?></option>
+                      <option value="no"><?php echo app('translator')->get('No'); ?></option>
                     </select>
                   </div>
                   <i class="far fa-check-circle"></i>
@@ -173,8 +173,9 @@
                   type="text"
                   class="form-control"
                   name="name"
-                  placeholder="Họ và tên"
+                  placeholder="Họ và tên *"
                   value=""
+                  required
                 />
               </div>
               <div class="form-group col-12 col-sm-5">
@@ -182,8 +183,9 @@
                   type="text"
                   class="form-control"
                   name="phone"
-                  placeholder="Số điện thoại"
+                  placeholder="Số điện thoại *"
                   value=""
+                  required
                 />
               </div>
               <div class="form-group col-12 col-sm-2 text-center">

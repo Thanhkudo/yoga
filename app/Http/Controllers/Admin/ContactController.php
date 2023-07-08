@@ -92,6 +92,12 @@ class ContactController extends Controller
         // $this->responseData['departments'] = ContentService::getCmsTaxonomy($paramTaxonomys)->get();
         $this->responseData['detail'] = $contact;
 
+        if(isset($contact->json_params->product)){
+            $params['is_type'] = Consts::POST_TYPE['product'];
+            $params['id'] = $contact->json_params->product;
+            $product = ContentService::getCmsPost($params)->first();
+            $this->responseData['detail_product'] = $product;
+        }
         return $this->responseView($this->viewPart . '.edit');
     }
 

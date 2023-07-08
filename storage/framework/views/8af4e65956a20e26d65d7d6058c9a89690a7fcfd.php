@@ -78,7 +78,14 @@
               <label class="col-sm-3 text-right text-bold"><?php echo app('translator')->get('Content note'); ?>:</label>
               <label class="col-sm-9 col-xs-12"><?php echo e($detail->content ?? ''); ?></p>
             </div>
-
+            <?php $__currentLoopData = $detail->json_params; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $keys => $vals): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <div class="form-group">
+                <label class="col-sm-3 text-right text-bold"><?php echo app('translator')->get($keys); ?>:</label>
+                <label class="col-sm-9 col-xs-12"><?php echo e($vals); ?></p>
+              </div>
+            
+              
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <div class="form-group">
               <label class="col-sm-3 text-right text-bold"><?php echo app('translator')->get('Status'); ?>:</label>
               <div class="col-sm-6 col-xs-12 ">

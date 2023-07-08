@@ -99,6 +99,27 @@
                       </div>
                     </div>
                   </div>
+                  @isset($detail->json_params->product)
+                    @isset($detail_product)
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>@lang('Gói tập') </label>
+                        <input type="text" class="form-control" readonly
+                        value="{{ $detail_product->title ?? '' }}">
+                      </div>
+                    </div>
+                    @endisset
+                  @endisset
+                  @isset($detail->json_params->payment)
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>@lang('payment') </label>
+                        <input type="text" class="form-control" readonly
+                        value="{{ __($detail->json_params->payment) ?? '' }}">
+                      </div>
+                    </div>
+                  @endisset
+                  
                   <div class="col-md-12">
                     <div class="form-group">
                       <label>@lang('Content note')</label>

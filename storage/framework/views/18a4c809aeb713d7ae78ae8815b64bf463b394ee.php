@@ -102,6 +102,8 @@
 
 
                 </div>
+                <?php echo e($posts->withQueryString()->links('frontend.pagination.default')); ?>
+
             </div>
         </section>
     </div>

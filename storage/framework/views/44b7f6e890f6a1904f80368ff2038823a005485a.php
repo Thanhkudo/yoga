@@ -103,6 +103,27 @@
                       </div>
                     </div>
                   </div>
+                  <?php if(isset($detail->json_params->product)): ?>
+                    <?php if(isset($detail_product)): ?>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><?php echo app('translator')->get('Gói tập'); ?> </label>
+                        <input type="text" class="form-control" readonly
+                        value="<?php echo e($detail_product->title ?? ''); ?>">
+                      </div>
+                    </div>
+                    <?php endif; ?>
+                  <?php endif; ?>
+                  <?php if(isset($detail->json_params->payment)): ?>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label><?php echo app('translator')->get('payment'); ?> </label>
+                        <input type="text" class="form-control" readonly
+                        value="<?php echo e(__($detail->json_params->payment) ?? ''); ?>">
+                      </div>
+                    </div>
+                  <?php endif; ?>
+                  
                   <div class="col-md-12">
                     <div class="form-group">
                       <label><?php echo app('translator')->get('Content note'); ?></label>

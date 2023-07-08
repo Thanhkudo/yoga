@@ -46,6 +46,7 @@
                     <h2 class="title-page"><?php echo e($title); ?></h2>
                     <div class="list-blogs">
                         <div class="d-flex flex-wrap clearfix">
+                            
                             <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <?php
                                     $title = $item->json_params->title->{$locale} ?? $item->title;
@@ -76,8 +77,8 @@
                                     </div>
                                 </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                         </div>
+                        
                         <?php echo e($posts->withQueryString()->links('frontend.pagination.default')); ?>
 
 

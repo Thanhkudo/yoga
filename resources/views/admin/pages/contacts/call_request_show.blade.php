@@ -72,7 +72,14 @@
               <label class="col-sm-3 text-right text-bold">@lang('Content note'):</label>
               <label class="col-sm-9 col-xs-12">{{ $detail->content ?? '' }}</p>
             </div>
-
+            @foreach ($detail->json_params as $keys => $vals)
+              <div class="form-group">
+                <label class="col-sm-3 text-right text-bold">@lang($keys):</label>
+                <label class="col-sm-9 col-xs-12">{{ $vals }}</p>
+              </div>
+            
+              
+            @endforeach
             <div class="form-group">
               <label class="col-sm-3 text-right text-bold">@lang('Status'):</label>
               <div class="col-sm-6 col-xs-12 ">

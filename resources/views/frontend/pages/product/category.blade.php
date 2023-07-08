@@ -101,6 +101,7 @@
 
 
                 </div>
+                {{ $posts->withQueryString()->links('frontend.pagination.default') }}
             </div>
         </section>
     </div>

@@ -23,7 +23,7 @@
         <div class="frame_form col-12 col-lg-7">
           <form class="form_ajax" action="{{ route('frontend.contact.store') }}" method="post">
             @csrf
-            <input type="hidden" name="is_type" value="contact">
+            <input type="hidden" name="is_type" value="call_request">
             <div class="row bd_bottom justify-content-between">
               <div class="col-12 col-sm-5">
                 <div class="form-group row align-items-center mb-lg-4">
@@ -68,9 +68,9 @@
                       id="gender"
                       class="form-control"
                     >
-                      <option value="">@lang('Lựa chọn')</option>
-                      <option value="1">Nữ</option>
-                      <option value="2">Nam</option>
+                      <option value="">@lang('Please select')</option>
+                      <option value="male">@lang('Male')</option>
+                      <option value="female">@lang('Female')</option>
                     </select>
                   </div>
                   <i class="far fa-check-circle"></i>
@@ -103,9 +103,9 @@
                       
                       class="form-control"
                     >
-                      <option value="">@lang('Lựa chọn')</option>
-                      <option value="1">Có</option>
-                      <option value="2">Không</option>
+                      <option value="">@lang('Please select')</option>
+                      <option value="yes">@lang('Yes')</option>
+                      <option value="no">@lang('No')</option>
                     </select>
                   </div>
                   <i class="far fa-check-circle"></i>
@@ -120,9 +120,9 @@
                       
                       class="form-control"
                     >
-                      <option value="">@lang('Lựa chọn')</option>
-                      <option value="1">Có</option>
-                      <option value="2">Không</option>
+                      <option value="">@lang('Please select')</option>
+                      <option value="yes">@lang('Yes')</option>
+                      <option value="no">@lang('No')</option>
                     </select>
                   </div>
                   <i class="far fa-check-circle"></i>
@@ -136,9 +136,9 @@
                       name="json_params[is_sick]"
                       class="form-control"
                     >
-                      <option value="">@lang('Lựa chọn')</option>
-                      <option value="1">Có</option>
-                      <option value="2">Không</option>
+                      <option value="">@lang('Please select')</option>
+                      <option value="yes">@lang('Yes')</option>
+                      <option value="no">@lang('No')</option>
                     </select>
                   </div>
                   <i class="far fa-check-circle"></i>
@@ -152,9 +152,9 @@
                       name="json_params[time]"
                       class="form-control"
                     >
-                      <option value="">@lang('Lựa chọn')</option>
-                      <option value="1">Có</option>
-                      <option value="2">Không</option>
+                      <option value="">@lang('Please select')</option>
+                      <option value="yes">@lang('Yes')</option>
+                      <option value="no">@lang('No')</option>
                     </select>
                   </div>
                   <i class="far fa-check-circle"></i>
@@ -171,8 +171,9 @@
                   type="text"
                   class="form-control"
                   name="name"
-                  placeholder="Họ và tên"
+                  placeholder="Họ và tên *"
                   value=""
+                  required
                 />
               </div>
               <div class="form-group col-12 col-sm-5">
@@ -180,8 +181,9 @@
                   type="text"
                   class="form-control"
                   name="phone"
-                  placeholder="Số điện thoại"
+                  placeholder="Số điện thoại *"
                   value=""
+                  required
                 />
               </div>
               <div class="form-group col-12 col-sm-2 text-center">
