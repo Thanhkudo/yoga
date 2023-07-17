@@ -50,7 +50,7 @@
             </div>
             <div class="col-12 col-lg-6 d-none d-lg-flex box-img">
                 <div class="img">
-                    <img src="{{ $image }}" alt="{{ $title }}" />
+                    <img class="lazyload" src="{{ asset('images/load.gif') }}" data-src="{{$image}}" alt="{{ $title }}" />
                 </div>
             </div>
         </div>

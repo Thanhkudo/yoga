@@ -38,7 +38,7 @@
                             }
                             
                         @endphp
-                        <div class="carousel-item active" style=" background: url({{$image_for_screen}}); background-size: 100% 100%; height: 100%; ">
+                        <div class="carousel-item" style=" background: url({{$image_for_screen}}); background-size: 100% 100%; height: 100%; ">
                             <div class="container">
                                 <div class="frame">
                                     <p class="font-playball white">{{$title_childs}}</p>

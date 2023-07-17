@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ asset('themes/frontend/yoga/css/magnific-popup.css') }}" type="text/css" />
 <link rel="stylesheet" href="{{ asset('themes/frontend/yoga/css/slick.css') }}" type="text/css" />
 <link rel="stylesheet" href="{{ asset('themes/frontend/yoga/css/slick-theme.css') }}" type="text/css" />
-<link rel="stylesheet" href="{{ asset('themes/frontend/yoga/css/style.css') }}" type="text/css" />
+<link rel="stylesheet" href="{{ asset('themes/frontend/yoga/css/style.css') }}?ver={{$ver}}" type="text/css" />
 
 
 <style>

@@ -73,9 +73,8 @@
                                         $url_link2 = $items2->url_link != '' ? $items2->url_link : '';
                                         $url_link_title2 = $items2->json_params->url_link_title->{$locale} ?? $items2->url_link_title;
                                     ?>
-                                    <div class="col-6">
-                                        <?php echo $video2; ?>
-
+                                    <div class="col-6 data_iframe" data ="<?php echo e($video2); ?>">
+                                        
                                     </div>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>

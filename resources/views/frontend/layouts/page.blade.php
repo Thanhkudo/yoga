@@ -36,8 +36,15 @@
 </head>
 
 <body class="stretched">
-  <div id="wrapper" class="content-wrap p-0">
-
+  <div id="wrapper" class=" main-content">
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
     @include('frontend.blocks.header.styles.default')
 
     {{-- Foreach and print block content by current page --}}

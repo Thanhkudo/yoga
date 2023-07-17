@@ -47,8 +47,8 @@
                     @endphp
                     <div class="col-12 col-lg-5 mb-4 mb-lg-0">
                         <div class="item_video">
-                            <div class="frame">
-                                {!! $video !!}
+                            <div class="frame data_iframe" data ="{{$video}}">
+                                
                             </div>
                             <a href="{{ $url_link }}">
                                 <p class="text-right">

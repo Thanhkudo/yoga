@@ -84,37 +84,6 @@ $(function () {
     type: "iframe",
     src: $(this).attr("href"),
   });
-  $(".slick_lists").slick({
-    arrows: true,
-    adaptiveHeight: true,
-    centerMode: true,
-    centerPadding: "0",
-    slidesToShow: 3,
-    responsive: [
-      {
-        breakpoint: 960,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: "0",
-          slidesToShow: 1,
-          autoplay: true,
-          autoplaySpeed: 3000,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: "0",
-          slidesToShow: 1,
-          autoplay: false,
-          autoplaySpeed: 3000,
-        },
-      },
-    ],
-  });
 
   $(".form-control").on("change", function () {
     if ($(this).val() != "") {
@@ -130,7 +99,10 @@ $(function () {
     $(this).removeClass("slick-center");
   });
 
-  $('.carousel').carousel();
+  $(".carousel").carousel({
+    interval: false,
+  });
+
   $(".slick_content").slick({
     dots: true,
     autoplay: true,
@@ -153,5 +125,48 @@ $(function () {
     focusOnSelect: true,
     centerMode: true,
     centerPadding: "0",
+  });
+
+  $(window).scroll(function (event) {
+    $(".data_iframe").each(function () {
+      if (!$(this).hasClass("value_frame")) {
+        $(this).addClass("value_frame").html($(this).attr("data"));
+      }
+    });
+
+    if (!$(".slick_lists").hasClass("lazyslick")) {
+      $(".slick_lists").slick({
+        arrows: true,
+        adaptiveHeight: true,
+        centerMode: true,
+        centerPadding: "0",
+        slidesToShow: 3,
+        responsive: [
+          {
+            breakpoint: 960,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: "0",
+              slidesToShow: 1,
+              autoplay: true,
+              autoplaySpeed: 3000,
+            },
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: "0",
+              slidesToShow: 1,
+              autoplay: false,
+              autoplaySpeed: 3000,
+            },
+          },
+        ],
+      });
+      $(".slick_lists").addClass('lazyslick');
+    }
   });
 });

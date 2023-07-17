@@ -472,7 +472,7 @@
                                                 <div class="dd3-content">
                                                     <span class="text float-start"
                                                         data-update="title">{{ $item->title }}</span>
-                                                    <span class="text float-end">@lang($status[$item->status])</span>
+                                                    <span class="text float-end">@lang($item->status)</span>
                                                     <a data-toggle="collapse" href="#item-details-{{ $item->id }}"
                                                         role="button" aria-expanded="false"
                                                         aria-controls="item-details-{{ $item->id }}"
@@ -911,16 +911,16 @@
                                                                                                     <div
                                                                                                         class="form-group">
                                                                                                         <label>@lang('Brief')</label>
-                                                                                                        <blade
-                                                                                                            ___html_tags_6___ />
+                                                                                                        <textarea name="brief"  class="form-control" rows="5">{{ old('brief') ?? $item->brief }}</textarea>
+
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
                                                                                                     <div
                                                                                                         class="form-group">
                                                                                                         <label>@lang('Content')</label>
-                                                                                                        <blade
-                                                                                                            ___html_tags_7___ />
+                                                                                                        <textarea name="content"  class="form-control" rows="5">{{ old('content') ?? $item_sub_1->content }}</textarea>
+
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
@@ -950,18 +950,6 @@
                                                                                                 <div class="col-md-6">
                                                                                                     <div
                                                                                                         class="form-group">
-                                                                                                        <label>@lang('Order')</label>
-                                                                                                        <input
-                                                                                                            type="number"
-                                                                                                            class="form-control"
-                                                                                                            name="iorder"
-                                                                                                            placeholder="@lang('Order')"
-                                                                                                            value="{{ old('iorder') ?? $item_sub_1->iorder }}">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-md-6">
-                                                                                                    <div
-                                                                                                        class="form-group">
                                                                                                         <label>@lang('Icon')</label>
                                                                                                         <input
                                                                                                             type="text"
@@ -971,6 +959,17 @@
                                                                                                             value="{{ old('icon') ?? $item_sub_1->icon }}">
                                                                                                     </div>
                                                                                                 </div>
+                                                                                                <div class="col-md-6">
+                                                                                                    <div class="form-group">
+                                                                                                        <label>@lang('Video')</label>
+                                                                                                        <input type="text"
+                                                                                                            class="form-control"
+                                                                                                            name="json_params[video]"
+                                                                                                            placeholder=""
+                                                                                                            value="{{ old('json_params[video]') ?? ($item_sub_1->json_params->video ?? '') }}">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                
                                                                                                 <div class="col-md-6">
                                                                                                     <div
                                                                                                         class="form-group">

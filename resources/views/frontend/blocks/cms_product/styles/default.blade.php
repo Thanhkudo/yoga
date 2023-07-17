@@ -26,7 +26,7 @@
             </p>
         </div>
         <div class="box_slick" style="background: url({{ $background }}) 100% 100% no-repeat">
-            <div class="slick_lists">
+            <div class="slick_lists" >
                 @foreach ($rows as $item)
                     @php
                         $title = $item->json_params->title->{$locale} ?? $item->title;
@@ -37,7 +37,7 @@
                         $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $item->taxonomy_title, $item->taxonomy_id);
                         $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $title, $item->id, 'detail', $item->taxonomy_title);
                     @endphp
-                    <div class="slick_items">
+                    <div class="slick_items " aria-hidden="true">
                         <div class="box bora-30">
                             <h3 class="title text-center text-uppercase">
                                 {{$title}}

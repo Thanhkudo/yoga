@@ -36,7 +36,7 @@
             background: url(<?php echo e($image_for_screen); ?>);
             background-size: 100% 100%;
             background-repeat: no-repeat;
-            height: calc(100vh - 180px);
+            height: auto;
             max-height: 570px;
         }
     </style>
@@ -45,7 +45,7 @@
 
 <?php $__env->startSection('content'); ?>
     <div class="bodywrap container">
-        <section id="slider" class="">
+        <section id="sliderww" class="">
             <div id="title" class="page-title">
                 <div class="bg_page"
                     style="background: url(<?php echo e($image_for_screen); ?>);

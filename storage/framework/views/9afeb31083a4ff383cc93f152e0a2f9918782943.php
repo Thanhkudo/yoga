@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/magnific-popup.css')); ?>" type="text/css" />
 <link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/slick.css')); ?>" type="text/css" />
 <link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/slick-theme.css')); ?>" type="text/css" />
-<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/style.css')); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/yoga/css/style.css')); ?>?ver=<?php echo e($ver); ?>" type="text/css" />
 
 
 <style>

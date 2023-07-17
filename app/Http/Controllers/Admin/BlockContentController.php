@@ -116,7 +116,7 @@ class BlockContentController extends Controller
 
         $parents_child = BlockContent::where('status', 'active')->orderByRaw('iorder ASC, id DESC')->get();
         // Get all child which have status is active
-        $child = BlockContent::where('status', 'active')->where('parent_id', $blockContent->id)->orderByRaw('iorder ASC, id DESC')->get();
+        $child = BlockContent::where('status','!=', 'delete')->where('parent_id', $blockContent->id)->orderByRaw('iorder ASC, id DESC')->get();
         // Get all blocks which have status is active
         $blocks = Block::where('status', 'active')->orderByRaw('iorder ASC, id DESC')->get();
 

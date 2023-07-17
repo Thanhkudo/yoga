@@ -1,12 +1,12 @@
-<script src="{{ asset('themes/frontend/yoga/js/all.min.js') }}"></script>
+<script async src="{{ asset('themes/frontend/yoga/js/all.min.js') }}"></script>
 <script src="{{ asset('themes/frontend/yoga/js/jquery.min.js') }}"></script>
-<script src="{{ asset('themes/frontend/yoga/js/popper.min.js') }}"></script>
+<script async src="{{ asset('themes/frontend/yoga/js/popper.min.js') }}"></script>
 <script src="{{ asset('themes/frontend/yoga/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('themes/frontend/yoga/js/jquery.sticky.js') }}"></script>
-<script src="{{ asset('themes/frontend/yoga/js/jquery.magnific-popup.min.js') }}"></script>
-<script src="{{ asset('themes/frontend/yoga/js/slick.min.js') }}"></script>
+<script async src="{{ asset('themes/frontend/yoga/js/jquery.sticky.js') }}"></script>
+<script async src="{{ asset('themes/frontend/yoga/js/jquery.magnific-popup.min.js') }}"></script>
+<script async src="{{ asset('themes/frontend/yoga/js/slick.min.js') }}"></script>
 <script src="{{ asset('themes/frontend/yoga/js/lazysizes.min.js') }}"></script>
-<script src="{{ asset('themes/frontend/yoga/js/main.js') }}"></script>
+<script async src="{{ asset('themes/frontend/yoga/js/main.js') }}?ver={{$ver}}"></script>
 
 
 <script>

@@ -1,18 +1,17 @@
-<script src="<?php echo e(asset('themes/frontend/yoga/js/all.min.js')); ?>"></script>
+<script async src="<?php echo e(asset('themes/frontend/yoga/js/all.min.js')); ?>"></script>
 <script src="<?php echo e(asset('themes/frontend/yoga/js/jquery.min.js')); ?>"></script>
-<script src="<?php echo e(asset('themes/frontend/yoga/js/popper.min.js')); ?>"></script>
+<script async src="<?php echo e(asset('themes/frontend/yoga/js/popper.min.js')); ?>"></script>
 <script src="<?php echo e(asset('themes/frontend/yoga/js/bootstrap.min.js')); ?>"></script>
-<script src="<?php echo e(asset('themes/frontend/yoga/js/jquery.sticky.js')); ?>"></script>
-<script src="<?php echo e(asset('themes/frontend/yoga/js/jquery.magnific-popup.min.js')); ?>"></script>
-<script src="<?php echo e(asset('themes/frontend/yoga/js/slick.min.js')); ?>"></script>
+<script async src="<?php echo e(asset('themes/frontend/yoga/js/jquery.sticky.js')); ?>"></script>
+<script async src="<?php echo e(asset('themes/frontend/yoga/js/jquery.magnific-popup.min.js')); ?>"></script>
+<script async src="<?php echo e(asset('themes/frontend/yoga/js/slick.min.js')); ?>"></script>
 <script src="<?php echo e(asset('themes/frontend/yoga/js/lazysizes.min.js')); ?>"></script>
-<script src="<?php echo e(asset('themes/frontend/yoga/js/main.js')); ?>"></script>
+<script async src="<?php echo e(asset('themes/frontend/yoga/js/main.js')); ?>?ver=<?php echo e($ver); ?>"></script>
 
-
+<div id="slick_js"></div>
 <script>
    
     $(function() {
-
         $("#form-booking").submit(function(e) {
             //  $(".form-process").show();
             e.preventDefault();
@@ -116,36 +115,6 @@
                 });
             }
         });
-        $(document).on('click', '.add_to_cart', function() {
-            let _root = $(this);
-            let _id = _root.attr("data-id");
-            let _quantity =$(".prd_quantity").val();
-            add_to_cart(_id, _quantity);
-        });
-
-        function add_to_cart(_id, _quantity){
-            if (_id > 0 && _quantity > 0) {
-                var url = "<?php echo e(route('frontend.order.add_to_cart')); ?>";
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {
-                        "_token": "<?php echo e(csrf_token()); ?>",
-                        "id": _id,
-                        "quantity": _quantity
-                    },
-                    success: function(data) {
-                        window.location.reload();
-                    },
-                    error: function(data) {
-                        // Get errors
-                        var errors = data.responseJSON.message;
-                        alert(errors);
-                        location.reload();
-                    }
-                });
-            }
-        }
         
         $(".update-cart").change(function(e) {
             e.preventDefault();
@@ -182,6 +151,7 @@
             }
         });
     });
+
 
     const filterArray = (array, fields, value) => {
         fields = Array.isArray(fields) ? fields : [fields];

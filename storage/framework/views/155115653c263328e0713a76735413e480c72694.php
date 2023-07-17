@@ -65,7 +65,7 @@
 
                 <div class="col-12 col-lg-4 col-md-6 mb-4">
                     <div class="block block-menu">
-                        <h2 class="block-title green">Địa chỉ</h2>
+                        <h4 class="block-title green">Địa chỉ</h4>
                         <p><?php echo e($web_information->information->address ?? ''); ?></p>
                         <div class="block-content">
                             <ul>

@@ -479,7 +479,7 @@
                                                 <div class="dd3-content">
                                                     <span class="text float-start"
                                                         data-update="title"><?php echo e($item->title); ?></span>
-                                                    <span class="text float-end"><?php echo app('translator')->get($status[$item->status]); ?></span>
+                                                    <span class="text float-end"><?php echo app('translator')->get($item->status); ?></span>
                                                     <a data-toggle="collapse" href="#item-details-<?php echo e($item->id); ?>"
                                                         role="button" aria-expanded="false"
                                                         aria-controls="item-details-<?php echo e($item->id); ?>"
@@ -924,16 +924,16 @@
                                                                                                     <div
                                                                                                         class="form-group">
                                                                                                         <label><?php echo app('translator')->get('Brief'); ?></label>
-                                                                                                        <blade
-                                                                                                            ___html_tags_6___ />
+                                                                                                        <textarea name="brief"  class="form-control" rows="5"><?php echo e(old('brief') ?? $item->brief); ?></textarea>
+
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
                                                                                                     <div
                                                                                                         class="form-group">
                                                                                                         <label><?php echo app('translator')->get('Content'); ?></label>
-                                                                                                        <blade
-                                                                                                            ___html_tags_7___ />
+                                                                                                        <textarea name="content"  class="form-control" rows="5"><?php echo e(old('content') ?? $item_sub_1->content); ?></textarea>
+
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
@@ -963,18 +963,6 @@
                                                                                                 <div class="col-md-6">
                                                                                                     <div
                                                                                                         class="form-group">
-                                                                                                        <label><?php echo app('translator')->get('Order'); ?></label>
-                                                                                                        <input
-                                                                                                            type="number"
-                                                                                                            class="form-control"
-                                                                                                            name="iorder"
-                                                                                                            placeholder="<?php echo app('translator')->get('Order'); ?>"
-                                                                                                            value="<?php echo e(old('iorder') ?? $item_sub_1->iorder); ?>">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-md-6">
-                                                                                                    <div
-                                                                                                        class="form-group">
                                                                                                         <label><?php echo app('translator')->get('Icon'); ?></label>
                                                                                                         <input
                                                                                                             type="text"
@@ -984,6 +972,17 @@
                                                                                                             value="<?php echo e(old('icon') ?? $item_sub_1->icon); ?>">
                                                                                                     </div>
                                                                                                 </div>
+                                                                                                <div class="col-md-6">
+                                                                                                    <div class="form-group">
+                                                                                                        <label><?php echo app('translator')->get('Video'); ?></label>
+                                                                                                        <input type="text"
+                                                                                                            class="form-control"
+                                                                                                            name="json_params[video]"
+                                                                                                            placeholder=""
+                                                                                                            value="<?php echo e(old('json_params[video]') ?? ($item_sub_1->json_params->video ?? '')); ?>">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                
                                                                                                 <div class="col-md-6">
                                                                                                     <div
                                                                                                         class="form-group">

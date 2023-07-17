@@ -13,7 +13,8 @@
             return $item->parent_id == $block->id;
         });
     @endphp
-    
+
+
     <section id="slider" class="slider-element min-vh-60 min-vh-md-100 include-header">
         <div id="carouselBanner" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -38,23 +39,22 @@
                             }
                             
                         @endphp
-                        <div class="carousel-item active" style=" background: url({{$image_for_screen}}); background-size: 100% 100%; height: 100%; ">
+                        <div class="carousel-item active"
+                            style=" background: url({{ $image_for_screen }}); background-size: 100% 100%; height: 100%; ">
                             <div class="container">
                                 <div class="frame">
-                                    <p class="font-playball white">{{$title_childs}}</p>
+                                    <p class="font-playball white">{{ $title_childs }}</p>
                                     <h2 class="title">
-                                        {!!$brief_childs!!}
+                                        {!! $brief_childs !!}
                                     </h2>
                                     <p class="content">
-                                        {!!$content_childs!!}
+                                        {!! $content_childs !!}
                                     </p>
                                 </div>
                             </div>
                             <div class="btn-play">
-                                <a class="image-link"
-                                    href="{{$video}}"
-                                    title="Video">
-                                    <i class="{{$icon}}" style="color: #ffffff;"></i>
+                                <a class="image-link" href="{{ $video }}" title="Video">
+                                    <i class="{{ $icon }}" style="color: #ffffff;"></i>
                                 </a>
                             </div>
                         </div>

@@ -33,6 +33,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
+        $this->responseData['ver'] = 1;
         // Get all global system params
         $options = ContentService::getOption();
         if ($options) {

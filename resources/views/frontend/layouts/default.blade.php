@@ -33,26 +33,21 @@
     {{-- Styles custom each page --}}
     @stack('style')
     <style>
-        .side-push-panel.side-panel-open.stretched.device-lg .slider-inner,
-        .side-push-panel.side-panel-open.stretched.device-xl .slider-inner,
-        .side-push-panel.side-panel-open-signup.stretched.device-lg .slider-inner,
-        .side-push-panel.side-panel-open-signup.stretched.device-xl .slider-inner {
-            left: 0px;
-        }
 
-        body.side-push-panel.side-panel-open.stretched #wrapper,
-        body.side-push-panel.side-panel-open.stretched #header.sticky-header .container,
-        body.side-push-panel.side-panel-open-signup.stretched #wrapper,
-        body.side-push-panel.side-panel-open-signup.stretched #header.sticky-header .container {
-            right: 0px;
-        }
     </style>
     @stack('schema')
 </head>
 
 <body class="stretched side-push-panel">
-    <div id="wrapper" class="clearfix">
-
+    <div id="wrapper" class="clearfix main-content">
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
         @include('frontend.blocks.header.styles.default')
 
         {{-- Foreach and print block content by current page --}}
@@ -68,7 +63,7 @@
         @include('frontend.blocks.footer.styles.default')
         <div class="backdrop__body-backdrop___1rvky"></div>
     </div>
- 
+
 
     {{-- Include fixed alert --}}
     @include('frontend.components.sticky.alert')

@@ -5,8 +5,8 @@
     $brief = $detail->json_params->brief->{$locale} ?? 'Mô tả đang cập nhật';
     $price = $detail->json_params->price ?? null;
     $content = $detail->json_params->content->{$locale} ?? null;
-    $image = $detail->image != '' ? $detail->image : ($web_information->image->background_breadcrumbs ?? null);
-    $image_thumb = $detail->image_thumb != '' ? $detail->image_thumb : null;
+    $image = $detail->image != '' ? $detail->image : null;
+    $image_thumb = $detail->image_thumb != '' ? $detail->image_thumb : ($web_information->image->background_breadcrumbs ?? null);
     $date = date('H:i d/m/Y', strtotime($detail->created_at));
     // For taxonomy
     $taxonomy_json_params = json_decode($detail->taxonomy_json_params);
@@ -38,7 +38,8 @@
     background: url({{$image_product_screen}});
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    height: calc(100vh - 180px);
+    height: auto;
+    min-height: 200px;
     max-height: 570px;
 }
     </style>

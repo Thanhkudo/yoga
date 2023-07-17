@@ -27,7 +27,7 @@
 
 @section('content')
     {{-- Print all content by [module - route - page] without blocks content at here --}}
-    <div class="container">
+    <div class="main-content">
         <section id="slider" class="">
             <div id="title" class="page-title">
                 <div class="bg_page"
@@ -47,10 +47,8 @@
                 </div>
             </div>
         </section>
-        <section id="course" class="mb-5 box_learning"
-            style="background: url({{ url('data/cms-image/images/bg_learning1.png') }}); 
-        background-size: 100% 100%;
-        background-repeat: no-repeat;">
+        
+        <section id="course" class="mb-5 box_learning" >
             <div class="box_title text-center mb-3 mb-lg-5">
                 <h2 class="title text-uppercase">{{ $brief }}</h2>
                 <p class="bref">
@@ -69,7 +67,7 @@
                             $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->taxonomy_alias ?? $item->taxonomy_title, $item->taxonomy_id);
                             $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->alias ?? $title, $item->id, 'detail', $item->taxonomy_title);
                         @endphp
-                        <div class="items col-12 col-md-6 col-lg-4">
+                        <div class="items col-12 col-md-6 col-lg-6">
                             <div class="slick_items">
                                 <div class="box bora-30">
                                     <h3 class="title text-center text-uppercase">

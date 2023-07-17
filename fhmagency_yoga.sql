@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 08, 2023 lúc 12:56 PM
--- Phiên bản máy phục vụ: 10.4.27-MariaDB
--- Phiên bản PHP: 7.4.33
+-- Máy chủ: localhost
+-- Thời gian đã tạo: Th7 17, 2023 lúc 09:13 AM
+-- Phiên bản máy phục vụ: 10.3.34-MariaDB
+-- Phiên bản PHP: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `yoga`
+-- Cơ sở dữ liệu: `fhmagency_yoga`
 --
 
 -- --------------------------------------------------------
@@ -29,14 +29,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admins` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role` int(11) NOT NULL,
   `json_information` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_information`)),
   `is_super_admin` tinyint(1) NOT NULL DEFAULT 0,
-  `status` varchar(20) NOT NULL DEFAULT 'active',
-  `remember_token` varchar(100) DEFAULT NULL,
+  `status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `role`, `json_information`, `is_super_admin`, `status`, `remember_token`, `admin_created_id`, `admin_updated_id`, `created_at`, `updated_at`) VALUES
 (1, 'Thắng Nguyễn', 'huuthangb2k50@gmail.com', '$2y$10$7gxfGSFLfg1BwfRZfsBCL.UNBLgP/R.c87SeIelNhACtfyVYACjoe', 2, NULL, 1, 'active', NULL, NULL, NULL, '2021-09-24 08:48:18', '2022-12-08 03:56:38'),
-(2, 'Test', 'test@gmail.com', '$2y$10$7gxfGSFLfg1BwfRZfsBCL.UNBLgP/R.c87SeIelNhACtfyVYACjoe', 2, NULL, 0, 'active', NULL, NULL, NULL, '2022-07-08 11:13:53', '2023-03-03 08:49:03');
+(3, 'admin', 'admin@gmail.com', '$2y$10$lgTMXnRUG7q1ZfTBQAF65.Rt8vvYi4aPFoVo80oR6xmSkef80TJsG', 2, NULL, 0, 'active', NULL, NULL, NULL, '2023-07-10 01:54:39', '2023-07-10 01:54:39');
 
 -- --------------------------------------------------------
 
@@ -59,10 +59,10 @@ INSERT INTO `admins` (`id`, `name`, `email`, `password`, `role`, `json_informati
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -74,7 +74,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -121,8 +121,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -135,12 +135,12 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `tb_admin_menus` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `icon` varchar(255) DEFAULT NULL,
-  `url_link` varchar(255) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) DEFAULT 'active',
-  `toolbar` varchar(255) DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'active',
+  `toolbar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -187,16 +187,16 @@ INSERT INTO `tb_admin_menus` (`id`, `parent_id`, `name`, `icon`, `url_link`, `io
 
 CREATE TABLE `tb_affiliate_historys` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `is_type` varchar(255) DEFAULT NULL,
+  `is_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL,
   `order_id` bigint(20) DEFAULT NULL,
   `order_total_money` double(20,2) NOT NULL DEFAULT 0.00,
   `affiliate_percent` double(20,2) NOT NULL DEFAULT 0.00,
   `affiliate_point` double(20,2) DEFAULT NULL,
   `affiliate_money` double(20,2) DEFAULT NULL,
-  `description` text DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
-  `status` varchar(255) NOT NULL DEFAULT 'pending',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -229,9 +229,9 @@ CREATE TABLE `tb_affiliate_payments` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `money` double(20,2) DEFAULT NULL,
-  `description` text DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
-  `status` varchar(255) DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -257,13 +257,13 @@ INSERT INTO `tb_affiliate_payments` (`id`, `user_id`, `money`, `description`, `j
 
 CREATE TABLE `tb_blocks` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
-  `block_code` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `block_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
   `is_config` tinyint(1) NOT NULL DEFAULT 1,
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -287,7 +287,6 @@ INSERT INTO `tb_blocks` (`id`, `name`, `description`, `block_code`, `json_params
 (36, 'Khối danh sách sản phẩm nổi bật', NULL, 'cms_product', '{\r\n	\"template\":[\r\n		\"home.primary\",\r\n		\"page.default\",\r\n                \"aboutus.primary\"\r\n	]\r\n}', 1, 4, 'active', 1, 1, '2022-10-08 03:22:14', '2023-07-05 02:08:16'),
 (37, 'Khối danh sách câu hỏi thường gặp - FAQs', NULL, 'faq', '{\r\n	\"template\":[\r\n		\"home.primary\"\r\n	],\r\n	\"layout\":[\r\n		\"default\"\r\n	]\r\n}', 1, 98, 'deactive', 1, 1, '2022-10-17 04:36:18', '2023-01-09 08:51:19'),
 (39, 'Khối tìm kiếm', NULL, 'cms_search', '{\r\n	\"template\":[\r\n		\"home.primary\",\r\n                 \"product.category\",\r\n		\"page.default\"\r\n	]\r\n}', 1, 5, 'deactive', 1, 1, '2023-01-09 03:45:12', '2023-04-12 02:01:29'),
-(40, 'Khối danh sách danh mục sản phẩm nổi bật', NULL, 'cms_taxonomy_product', '{\r\n	\"template\":[\r\n		\"home.primary\",\r\n		\"page.default\"\r\n	]\r\n}', 1, 4, 'deactive', 1, 1, '2023-04-06 09:38:41', '2023-07-08 07:59:39'),
 (42, 'Khối banner video', NULL, 'banner_video', '{\r\n	\"template\":[\r\n		\"home.primary\",\r\n                \"post.detail\",\r\n		\"post.default\",\r\n		\"product.detail\",\r\n		\"product.default\",\r\n		\"service.detail\",\r\n		\"service.default\",\r\n		\"department.default\",\r\n		\"page.default\",\r\n		\"doctor.detail\",\r\n		\"resource.detail\",\r\n		\"resource.default\",\r\n		\"contact.default\",\r\n		\"cart.default\",\r\n		\"user.default\",\r\n		\"tags.default\",\r\n		\"search.default\",\r\n                \"aboutus.primary\",\r\n		\"branch.default\"\r\n	],\r\n	\"layout\":[\r\n		\"slide\",\r\n                \"slick\"\r\n       \r\n	]\r\n}', 1, 2, 'active', 1, 1, '2023-07-03 09:15:28', '2023-07-06 04:42:38'),
 (43, 'Khối nội dung nhiều link điều hướng', NULL, 'custom_link', '{\r\n	\"template\":[\r\n		\"home.primary\"\r\n	],\r\n	\"layout\":[\r\n		\"default\"\r\n	]\r\n}', 1, 5, 'active', 1, 1, '2023-07-04 02:13:35', '2023-07-04 02:14:54');
 
@@ -300,20 +299,20 @@ INSERT INTO `tb_blocks` (`id`, `name`, `description`, `block_code`, `json_params
 CREATE TABLE `tb_block_contents` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
-  `title` varchar(255) NOT NULL,
-  `brief` text DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
-  `block_code` varchar(255) NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `brief` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `block_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
-  `image` varchar(255) DEFAULT NULL,
-  `image_background` varchar(255) DEFAULT NULL,
-  `icon` varchar(255) DEFAULT NULL,
-  `url_link` varchar(255) DEFAULT NULL,
-  `url_link_title` varchar(255) DEFAULT NULL,
-  `position` varchar(255) DEFAULT NULL,
-  `system_code` varchar(255) DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image_background` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url_link_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `system_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -328,7 +327,7 @@ INSERT INTO `tb_block_contents` (`id`, `parent_id`, `title`, `brief`, `content`,
 (19, NULL, 'Giới thiệu', 'Authoritatively communicate world-class alignments before low-risk high-yield growth strategies. Synergistically envisioneer transparent niches after dynamic \"outside the box\" thinking. Uniquely implement cutting-edge partnerships before synergistic niche markets.', NULL, 'custom', '{\"layout\":\"about_us\",\"style\":null}', '/data/cms-image/1/Screenshot_14.png', '/data/cms-image/1/sign.png', NULL, NULL, NULL, NULL, NULL, 6, 'delete', 1, 1, '2021-10-12 10:29:41', '2023-01-09 09:06:36'),
 (21, 19, 'img1', NULL, NULL, 'custom', '{\"layout\":null,\"style\":null}', '/data/cms-image/1/1 (2).jpg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 'delete', 1, 1, '2021-10-12 10:31:50', '2022-12-29 04:32:07'),
 (22, 19, 'img2', NULL, NULL, 'custom', '{\"layout\":null,\"style\":null}', '/data/cms-image/1/2.jpg', NULL, NULL, NULL, 'learn more', NULL, NULL, 2, 'delete', 1, 1, '2021-10-12 10:32:50', '2022-12-29 04:32:35'),
-(74, NULL, 'Khối hình ảnh banner đầu trang chủ', NULL, NULL, 'banner_video', '{\"layout\":\"slide\",\"style\":null}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'active', 1, 1, '2022-03-18 17:50:28', '2023-07-03 09:50:03'),
+(74, NULL, 'Khối hình ảnh banner đầu trang chủ', NULL, NULL, 'banner_video', '{\"layout\":\"slide\",\"style\":null}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'active', 1, 1, '2022-03-18 17:50:28', '2023-07-11 09:03:50'),
 (79, NULL, 'Điều chúng tôi làm', NULL, NULL, 'custom', '{\"layout\":\"about_vision\",\"style\":null}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7, 'delete', 1, 1, '2022-05-31 07:26:33', '2023-01-09 09:06:42'),
 (82, NULL, 'BẢNG GIÁ DỊCH VỤ', NULL, NULL, 'custom', '{\"layout\":\"core_value\",\"style\":null}', '/data/cms-image/1/Frame.png', '/data/cms-image/1/3.jpg', NULL, NULL, NULL, NULL, NULL, 6, 'delete', 1, 1, '2022-06-01 08:39:42', '2023-01-09 09:06:28'),
 (94, NULL, 'Khối hiển thị nội dung chính', NULL, NULL, 'main', '{\"layout\":null,\"style\":null}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'active', 1, 1, '2022-06-02 11:24:21', '2023-07-04 09:19:41'),
@@ -421,23 +420,23 @@ INSERT INTO `tb_block_contents` (`id`, `parent_id`, `title`, `brief`, `content`,
 (370, NULL, '<span class=\"font-playball\">Đến</span>  <span class=\"green\"> YOGA</span> STUDIO', NULL, 'Chúng tôi cung cấp các lớp học Yoga lợi ích toàn diện với phương pháp luyện tập hiệu quả, dễ dàng. Tại yoga studio mọi người có thể tiếp cận và sở hữu Yoga như một công cụ nuôi dưỡng và kết nối&nbsp;<span style=\"color:#25ab75;\">THÂN – TÂM – TRÍ.</span>', 'custom_link', '{\"layout\":\"default\",\"style\":null,\"url_link\":\"\\/gioi-thieu\",\"url_link_title\":\"T\\u00ecm hi\\u1ec3u th\\u00eam\"}', '/data/cms-image/Images/anh_doi.png', '/data/cms-image/Images/bg_nguoi.png', NULL, '/khoa-hoc', 'Đăng ký tập thử', NULL, NULL, 2, 'active', 1, 1, '2023-07-03 09:55:14', '2023-07-08 02:45:14'),
 (371, 74, 'alo44412312', '12313', '123123', 'banner_video', '{\"video\":\"123123\"}', '/data/cms-image/Images/banner2_mb.png', NULL, '213', '1231', '123132123123', NULL, NULL, 3, 'delete', 1, 1, '2023-07-03 10:44:35', '2023-07-03 15:34:51'),
 (372, 74, '221', '123123', '123123', 'banner_video', NULL, '/data/cms-image/Images/banner4.png', '/data/cms-image/Images/banner.png', 'fa', '1213', '#ffff', NULL, NULL, 1, 'delete', 1, 1, '2023-07-03 10:55:40', '2023-07-03 15:35:06'),
-(373, 365, 'Instagram', '<span class\"green\">YOGA</span> STYDIO', NULL, 'banner', '{\"video\":null}', '/data/cms-image/icon/logo_intagram.png', NULL, NULL, '/lien-ket', 'Xem tiếp', NULL, NULL, 1, 'active', 1, 1, '2023-07-03 15:55:46', '2023-07-08 02:48:21'),
-(374, 365, 'Facebook', '<span class\"green\">YOGA</span> STYDIO', NULL, 'banner', '{\"video\":null}', '/data/cms-image/icon/logo_facebook.png', NULL, NULL, '/lien-ket', 'Xem tiếp', NULL, NULL, 3, 'active', 1, 1, '2023-07-03 15:57:05', '2023-07-08 02:48:37'),
-(375, 365, 'Youtube', '<span class\"green\">YOGA</span> STYDIO', NULL, 'banner', '{\"video\":null}', '/data/cms-image/icon/logo_youtube.png', NULL, NULL, '/lien-ket', 'Xem tiếp', NULL, NULL, 2, 'active', 1, 1, '2023-07-03 15:57:32', '2023-07-08 02:48:29'),
+(373, 365, 'Instagram', '<span class\"green\">YOGA</span> STYDIO', NULL, 'banner', '{\"video\":null}', '/data/cms-image/icon/logo_intagram.png', NULL, NULL, '/lien-ket', 'Xem tiếp', NULL, NULL, 1, 'active', 1, 1, '2023-07-03 15:55:46', '2023-07-11 08:00:06'),
+(374, 365, 'Facebook', '<span class\"green\">YOGA</span> STYDIO', NULL, 'banner', '{\"video\":null}', '/data/cms-image/icon/logo_facebook.png', NULL, NULL, '/lien-ket', 'Xem tiếp', NULL, NULL, 3, 'active', 1, 1, '2023-07-03 15:57:05', '2023-07-11 07:59:59'),
+(375, 365, 'Youtube', '<span class\"green\">YOGA</span> STYDIO', NULL, 'banner', '{\"video\":null}', '/data/cms-image/icon/logo_youtube.png', NULL, NULL, '/lien-ket', 'Xem tiếp', NULL, NULL, 2, 'active', 1, 1, '2023-07-03 15:57:32', '2023-07-11 08:00:14'),
 (376, 373, 'video Ins', NULL, NULL, 'banner', '{\"video\":\"<iframe width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/fZZo2nq8UlY\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'active', 1, 1, '2023-07-03 16:01:10', '2023-07-03 16:03:15'),
 (377, 373, 'video ins', NULL, NULL, 'banner', '{\"video\":\"<iframe width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/fZZo2nq8UlY\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 'active', 1, 1, '2023-07-03 16:01:26', '2023-07-03 16:03:15'),
-(378, 374, 'video f', NULL, NULL, 'banner', '{\"video\":\"<iframe width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/fZZo2nq8UlY\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'active', 1, 1, '2023-07-03 16:01:45', '2023-07-03 16:03:15'),
-(379, 374, 'video f', NULL, NULL, 'banner', '{\"video\":\"<iframe width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/fZZo2nq8UlY\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 'active', 1, 1, '2023-07-03 16:01:55', '2023-07-03 16:03:15'),
-(380, 375, 'video y', NULL, NULL, 'banner', '{\"video\":\"<iframe width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/fZZo2nq8UlY\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'active', 1, 1, '2023-07-03 16:02:06', '2023-07-03 16:03:15'),
-(381, 375, 'video y', NULL, NULL, 'banner', '{\"video\":\"<iframe width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/fZZo2nq8UlY\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 'active', 1, 1, '2023-07-03 16:02:15', '2023-07-03 16:03:15'),
+(378, 374, 'video f', '<span class\"green\">YOGA</span> STYDIO', NULL, 'banner', '{\"layout\":null,\"style\":null,\"video\":\"<iframe loading=\\\"lazy\\\" width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/fZZo2nq8UlY\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'active', 1, 1, '2023-07-03 16:01:45', '2023-07-10 08:55:29'),
+(379, 374, 'video f', NULL, NULL, 'banner', '{\"video\":\"<iframe loading=\\\"lazy\\\"  width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/fZZo2nq8UlY\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 'active', 1, 1, '2023-07-03 16:01:55', '2023-07-03 16:03:15'),
+(380, 375, 'video y', NULL, NULL, 'banner', '{\"video\":\"<iframe loading=\\\"lazy\\\" width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/fZZo2nq8UlY\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'active', 1, 1, '2023-07-03 16:02:06', '2023-07-03 16:03:15'),
+(381, 375, 'video y', NULL, NULL, 'banner', '{\"video\":\"<iframe loading=\\\"lazy\\\"  width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/fZZo2nq8UlY\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 'active', 1, 1, '2023-07-03 16:02:15', '2023-07-03 16:03:15'),
 (382, NULL, 'Khối dịch vụ', NULL, NULL, 'custom', '{\"layout\":\"core_value\",\"style\":null}', '/data/cms-image/Images/ngoi_thien.png', NULL, NULL, NULL, NULL, NULL, NULL, 3, 'active', 1, 1, '2023-07-03 16:23:08', '2023-07-03 16:23:28'),
 (383, 382, 'Giáo trình giảng dạy', NULL, NULL, 'custom', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'active', 1, 1, '2023-07-03 16:23:45', '2023-07-03 16:25:33'),
 (384, 382, 'Dịch vụ chất lượng', NULL, NULL, 'custom', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 'active', 1, 1, '2023-07-03 16:23:57', '2023-07-03 16:25:33'),
 (385, 382, 'Thời gian linh hoạt', NULL, NULL, 'custom', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, 'active', 1, 1, '2023-07-03 16:24:44', '2023-07-03 16:25:33'),
 (386, 382, 'Học phí hợp lý tiết kiệm', NULL, NULL, 'custom', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, 'active', 1, 1, '2023-07-03 16:25:01', '2023-07-03 16:25:33'),
 (387, NULL, 'Cảm  nhận từ học viên', '<span class\"green\">YOGA</span> STUDIO luôn là lựa chọn hàng đầu của bạn', NULL, 'banner', '{\"layout\":\"video\",\"style\":null}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 'active', 1, 1, '2023-07-03 17:25:49', '2023-07-03 17:46:29'),
-(388, 387, 'video', NULL, NULL, 'banner', '{\"video\":\"<iframe loading=\\\"lazy\\\" width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/pyfqENlmSQs\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, '/lien-ket', 'Xem tiếp', NULL, NULL, NULL, 'active', 1, 1, '2023-07-03 17:34:42', '2023-07-08 02:47:41'),
-(389, 387, 'video', NULL, NULL, 'banner', '{\"video\":\"<iframe loading=\\\"lazy\\\" width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/pyfqENlmSQs\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, '/lien-ket', 'Xem tiếp', NULL, NULL, NULL, 'active', 1, 1, '2023-07-03 17:34:51', '2023-07-08 02:47:51'),
+(388, 387, 'video', NULL, NULL, 'banner', '{\"video\":\"<iframe  loading=\\\"lazy\\\" width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/pyfqENlmSQs\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, '/lien-ket', 'Xem tiếp', NULL, NULL, NULL, 'active', 1, 1, '2023-07-03 17:34:42', '2023-07-11 08:00:42'),
+(389, 387, 'video', NULL, NULL, 'banner', '{\"video\":\"<iframe  loading=\\\"lazy\\\" width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/pyfqENlmSQs\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', NULL, NULL, NULL, '/lien-ket', 'Xem tiếp', NULL, NULL, NULL, 'active', 1, 1, '2023-07-03 17:34:51', '2023-07-11 08:00:36'),
 (390, NULL, 'Một chút trải nghiệm', 'Hãy gửi cho chúng tôi các thông tin câu hỏi cần tư vấn', 'Hãy để lại tên và số điện thoại của bạn để chúng tôi thông báo đến bạn nhanh nhất', 'form', '{\"layout\":\"booking\",\"style\":null}', NULL, '/data/cms-image/Images/bg_trainghiem.png', NULL, NULL, NULL, NULL, NULL, 6, 'active', 1, 1, '2023-07-04 02:32:03', '2023-07-04 03:11:37'),
 (391, NULL, 'Các khóa học', 'Lựa chọn gói tập luyện phù hợp với nhu cầu, địa điểm và ngân sách của bạn', NULL, 'cms_product', '{\"layout\":null,\"style\":null}', NULL, '/data/cms-image/Images/bg_nui.png', NULL, NULL, NULL, NULL, NULL, 4, 'active', 1, 1, '2023-07-04 07:48:29', '2023-07-04 08:04:50'),
 (392, NULL, 'Khối nội dung chính', NULL, NULL, 'main', '{\"layout\":null,\"style\":null}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'delete', 1, 1, '2023-07-04 08:56:24', '2023-07-04 08:57:26'),
@@ -459,7 +458,7 @@ INSERT INTO `tb_block_contents` (`id`, `parent_id`, `title`, `brief`, `content`,
 (409, 407, 'Video 2', NULL, NULL, 'banner_video', '{\"video\":\"<iframe width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/AKclJ0s_VdQ\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', '/data/cms-image/Images/img_video2.png', NULL, NULL, NULL, NULL, NULL, NULL, 2, 'active', 1, 1, '2023-07-06 04:50:01', '2023-07-06 04:58:17'),
 (410, 407, 'Video 3', NULL, NULL, 'banner_video', '{\"video\":\"<iframe width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/ftR31O_j8CA\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', '/data/cms-image/Images/img_video3.png', NULL, NULL, NULL, NULL, NULL, NULL, 3, 'active', 1, 1, '2023-07-06 04:50:30', '2023-07-06 04:58:17'),
 (411, 407, 'Video 4', NULL, NULL, 'banner_video', '{\"video\":\"<iframe width=\\\"560\\\" height=\\\"315\\\" src=\\\"https:\\/\\/www.youtube.com\\/embed\\/XUGR0q89qug\\\" title=\\\"YouTube video player\\\" frameborder=\\\"0\\\" allow=\\\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\\\" allowfullscreen><\\/iframe>\"}', '/data/cms-image/Images/img_video2.png', NULL, NULL, NULL, NULL, NULL, NULL, 4, 'active', 1, 1, '2023-07-06 04:58:11', '2023-07-06 04:58:17'),
-(412, NULL, 'Blog', NULL, NULL, 'cms_post', '{\"layout\":null,\"style\":null}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'active', 1, 1, '2023-07-06 07:31:26', '2023-07-06 07:31:26');
+(412, NULL, 'Blog', NULL, NULL, 'cms_post', '{\"layout\":null,\"style\":null}', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 22, 'active', 1, 1, '2023-07-06 07:31:26', '2023-07-11 09:02:24');
 
 -- --------------------------------------------------------
 
@@ -470,18 +469,18 @@ INSERT INTO `tb_block_contents` (`id`, `parent_id`, `title`, `brief`, `content`,
 CREATE TABLE `tb_bookings` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `customer_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `customer_note` text DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `department_id` bigint(20) UNSIGNED DEFAULT NULL,
   `doctor_id` bigint(20) UNSIGNED DEFAULT NULL,
   `booking_date` date DEFAULT NULL,
-  `booking_time` varchar(255) DEFAULT NULL,
-  `admin_note` text DEFAULT NULL,
+  `booking_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
-  `status` varchar(255) NOT NULL DEFAULT 'new',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'new',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -496,16 +495,16 @@ CREATE TABLE `tb_bookings` (
 
 CREATE TABLE `tb_branchs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `is_type` varchar(255) DEFAULT NULL,
-  `name` text DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
-  `district` varchar(255) DEFAULT NULL,
-  `address` text DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `fax` varchar(255) DEFAULT NULL,
-  `map` text DEFAULT NULL,
+  `is_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `district` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fax` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `map` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -530,20 +529,20 @@ INSERT INTO `tb_branchs` (`id`, `is_type`, `name`, `city`, `district`, `address`
 CREATE TABLE `tb_cms_posts` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `taxonomy_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `is_type` varchar(255) DEFAULT 'post',
-  `title` varchar(255) NOT NULL,
+  `is_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'post',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
-  `image` varchar(255) DEFAULT NULL,
-  `image_thumb` varchar(255) DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image_thumb` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_featured` tinyint(1) NOT NULL DEFAULT 0,
   `count_visited` int(11) NOT NULL DEFAULT 0,
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `alias` varchar(255) DEFAULT NULL
+  `alias` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -562,16 +561,16 @@ INSERT INTO `tb_cms_posts` (`id`, `taxonomy_id`, `is_type`, `title`, `json_param
 (89, 17, 'resource', 'Đà Nẵng', '{\"price\":null,\"price_old\":null,\"place\":null,\"area\":null,\"scale\":null,\"brief\":{\"vi\":null},\"content\":{\"vi\":null},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/1/dv_3.jpg', NULL, 1, 0, 3, 'active', 1, 1, '2023-01-09 09:24:02', '2023-02-18 01:43:18', 'da-nang'),
 (90, 17, 'resource', 'Hải Phòng', '{\"price\":null,\"price_old\":null,\"place\":null,\"area\":null,\"scale\":null,\"brief\":{\"vi\":null},\"content\":{\"vi\":null},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/1/dv_4.jpg', NULL, 1, 0, 4, 'active', 1, 1, '2023-01-09 09:24:27', '2023-02-18 01:43:32', 'hai-phong'),
 (91, 17, 'resource', 'Thái Nguyên', '{\"price\":null,\"price_old\":null,\"place\":null,\"area\":null,\"scale\":null,\"brief\":{\"vi\":null},\"content\":{\"vi\":null},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/1/dv_5.jpg', NULL, 1, 0, 5, 'active', 1, 1, '2023-01-09 09:24:49', '2023-02-18 01:45:34', 'thai-nguyen'),
-(134, 1, 'post', 'Hơi thở bị lãng quên ?', '{\"brief\":{\"vi\":\"Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.\\u00a0T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.\"},\"content\":{\"vi\":\"<p><span style=\\\"font-size:var(--h2_typography-font-size)\\\"><span style=\\\"box-sizing:border-box\\\"><span style=\\\"font-family:var(--h2_typography-font-family)\\\"><span style=\\\"font-weight:var(--h2_typography-font-weight)\\\"><span style=\\\"line-height:var(--h2_typography-line-height)\\\"><span style=\\\"letter-spacing:var(--h2_typography-letter-spacing)\\\"><span style=\\\"font-style:normal\\\"><span style=\\\"color:var(--h2_typography-color)\\\"><span style=\\\"font-variant-ligatures:normal\\\"><span style=\\\"white-space:normal\\\"><span style=\\\"background-color:#ffffff\\\"><span style=\\\"text-decoration-thickness:initial\\\"><span style=\\\"text-decoration-style:initial\\\"><span style=\\\"text-decoration-color:initial\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.&nbsp;<\\/font><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.<\\/font><\\/font><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/Tin-tuc/blog1.png', NULL, 1, 2, 1, 'active', 1, 1, '2023-04-07 01:54:23', '2023-07-08 03:36:06', 'hoi-tho-bi-lang-quen'),
-(135, 1, 'post', 'Inside Flow Yoga là gì?', '{\"brief\":{\"vi\":\"Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.\\u00a0T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.\"},\"content\":{\"vi\":\"<p><span style=\\\"font-size:var(--h2_typography-font-size)\\\"><span style=\\\"box-sizing:border-box\\\"><span style=\\\"font-family:var(--h2_typography-font-family)\\\"><span style=\\\"font-weight:var(--h2_typography-font-weight)\\\"><span style=\\\"line-height:var(--h2_typography-line-height)\\\"><span style=\\\"letter-spacing:var(--h2_typography-letter-spacing)\\\"><span style=\\\"font-style:normal\\\"><span style=\\\"color:var(--h2_typography-color)\\\"><span style=\\\"font-variant-ligatures:normal\\\"><span style=\\\"white-space:normal\\\"><span style=\\\"background-color:#ffffff\\\"><span style=\\\"text-decoration-thickness:initial\\\"><span style=\\\"text-decoration-style:initial\\\"><span style=\\\"text-decoration-color:initial\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.&nbsp;<\\/font><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.<\\/font><\\/font><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/Tin-tuc/blog2.png', NULL, 1, 15, 2, 'active', 1, 1, '2023-04-07 01:57:48', '2023-07-08 03:36:32', 'inside-flow-yoga-la-gi'),
-(136, 1, 'post', 'Sự khác biệt của Inside Flow Yoga?', '{\"brief\":{\"vi\":\"Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.\\u00a0T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.\"},\"content\":{\"vi\":\"<p><span style=\\\"font-size:var(--h2_typography-font-size)\\\"><span style=\\\"box-sizing:border-box\\\"><span style=\\\"font-family:var(--h2_typography-font-family)\\\"><span style=\\\"font-weight:var(--h2_typography-font-weight)\\\"><span style=\\\"line-height:var(--h2_typography-line-height)\\\"><span style=\\\"letter-spacing:var(--h2_typography-letter-spacing)\\\"><span style=\\\"font-style:normal\\\"><span style=\\\"color:var(--h2_typography-color)\\\"><span style=\\\"font-variant-ligatures:normal\\\"><span style=\\\"white-space:normal\\\"><span style=\\\"background-color:#ffffff\\\"><span style=\\\"text-decoration-thickness:initial\\\"><span style=\\\"text-decoration-style:initial\\\"><span style=\\\"text-decoration-color:initial\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.&nbsp;<\\/font><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.<\\/font><\\/font><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/Tin-tuc/blog3.png', NULL, 1, 0, 3, 'active', 1, 1, '2023-04-07 01:59:20', '2023-07-08 03:36:51', 'su-khac-biet-cua-inside-flow-yoga'),
-(137, 1, 'post', 'Suy nghĩ về việc rèn luyện?', '{\"brief\":{\"vi\":\"Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.\\u00a0T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.\"},\"content\":{\"vi\":\"<p><span style=\\\"font-size:var(--h2_typography-font-size)\\\"><span style=\\\"box-sizing:border-box\\\"><span style=\\\"font-family:var(--h2_typography-font-family)\\\"><span style=\\\"font-weight:var(--h2_typography-font-weight)\\\"><span style=\\\"line-height:var(--h2_typography-line-height)\\\"><span style=\\\"letter-spacing:var(--h2_typography-letter-spacing)\\\"><span style=\\\"font-style:normal\\\"><span style=\\\"color:var(--h2_typography-color)\\\"><span style=\\\"font-variant-ligatures:normal\\\"><span style=\\\"white-space:normal\\\"><span style=\\\"background-color:#ffffff\\\"><span style=\\\"text-decoration-thickness:initial\\\"><span style=\\\"text-decoration-style:initial\\\"><span style=\\\"text-decoration-color:initial\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.&nbsp;<\\/font><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.<\\/font><\\/font><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/Tin-tuc/blog4.png', NULL, 0, 1, 4, 'active', 1, 1, '2023-04-07 02:00:26', '2023-07-08 03:37:31', 'suy-nghi-ve-viec-ren-luyen'),
+(134, 1, 'post', 'Hơi thở bị lãng quên ?', '{\"brief\":{\"vi\":\"Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.\\u00a0T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.\"},\"content\":{\"vi\":\"<p><span style=\\\"font-size:var(--h2_typography-font-size)\\\"><span style=\\\"box-sizing:border-box\\\"><span style=\\\"font-family:var(--h2_typography-font-family)\\\"><span style=\\\"font-weight:var(--h2_typography-font-weight)\\\"><span style=\\\"line-height:var(--h2_typography-line-height)\\\"><span style=\\\"letter-spacing:var(--h2_typography-letter-spacing)\\\"><span style=\\\"font-style:normal\\\"><span style=\\\"color:var(--h2_typography-color)\\\"><span style=\\\"font-variant-ligatures:normal\\\"><span style=\\\"white-space:normal\\\"><span style=\\\"background-color:#ffffff\\\"><span style=\\\"text-decoration-thickness:initial\\\"><span style=\\\"text-decoration-style:initial\\\"><span style=\\\"text-decoration-color:initial\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.&nbsp;<\\/font><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.<\\/font><\\/font><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/Tin-tuc/blog1.png', NULL, 1, 3, 1, 'active', 1, 1, '2023-04-07 01:54:23', '2023-07-10 03:03:51', 'hoi-tho-bi-lang-quen'),
+(135, 1, 'post', 'Inside Flow Yoga là gì?', '{\"brief\":{\"vi\":\"Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.\\u00a0T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.\"},\"content\":{\"vi\":\"<p><span style=\\\"font-size:var(--h2_typography-font-size)\\\"><span style=\\\"box-sizing:border-box\\\"><span style=\\\"font-family:var(--h2_typography-font-family)\\\"><span style=\\\"font-weight:var(--h2_typography-font-weight)\\\"><span style=\\\"line-height:var(--h2_typography-line-height)\\\"><span style=\\\"letter-spacing:var(--h2_typography-letter-spacing)\\\"><span style=\\\"font-style:normal\\\"><span style=\\\"color:var(--h2_typography-color)\\\"><span style=\\\"font-variant-ligatures:normal\\\"><span style=\\\"white-space:normal\\\"><span style=\\\"background-color:#ffffff\\\"><span style=\\\"text-decoration-thickness:initial\\\"><span style=\\\"text-decoration-style:initial\\\"><span style=\\\"text-decoration-color:initial\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.&nbsp;<\\/font><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.<\\/font><\\/font><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/Tin-tuc/blog2.png', NULL, 1, 20, 2, 'active', 1, 1, '2023-04-07 01:57:48', '2023-07-10 06:59:03', 'inside-flow-yoga-la-gi'),
+(136, 1, 'post', 'Sự khác biệt của Inside Flow Yoga?', '{\"brief\":{\"vi\":\"Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.\\u00a0T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.\"},\"content\":{\"vi\":\"<p><span style=\\\"font-size:var(--h2_typography-font-size)\\\"><span style=\\\"box-sizing:border-box\\\"><span style=\\\"font-family:var(--h2_typography-font-family)\\\"><span style=\\\"font-weight:var(--h2_typography-font-weight)\\\"><span style=\\\"line-height:var(--h2_typography-line-height)\\\"><span style=\\\"letter-spacing:var(--h2_typography-letter-spacing)\\\"><span style=\\\"font-style:normal\\\"><span style=\\\"color:var(--h2_typography-color)\\\"><span style=\\\"font-variant-ligatures:normal\\\"><span style=\\\"white-space:normal\\\"><span style=\\\"background-color:#ffffff\\\"><span style=\\\"text-decoration-thickness:initial\\\"><span style=\\\"text-decoration-style:initial\\\"><span style=\\\"text-decoration-color:initial\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.&nbsp;<\\/font><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.<\\/font><\\/font><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/Tin-tuc/blog3.png', '/data/cms-image/Tin-tuc/blog3.png', 1, 16, 3, 'active', 1, 1, '2023-04-07 01:59:20', '2023-07-10 04:17:34', 'su-khac-biet-cua-inside-flow-yoga'),
+(137, 1, 'post', 'Suy nghĩ về việc rèn luyện?', '{\"brief\":{\"vi\":\"Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.\\u00a0T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.\"},\"content\":{\"vi\":\"<p><span style=\\\"font-size:var(--h2_typography-font-size)\\\"><span style=\\\"box-sizing:border-box\\\"><span style=\\\"font-family:var(--h2_typography-font-family)\\\"><span style=\\\"font-weight:var(--h2_typography-font-weight)\\\"><span style=\\\"line-height:var(--h2_typography-line-height)\\\"><span style=\\\"letter-spacing:var(--h2_typography-letter-spacing)\\\"><span style=\\\"font-style:normal\\\"><span style=\\\"color:var(--h2_typography-color)\\\"><span style=\\\"font-variant-ligatures:normal\\\"><span style=\\\"white-space:normal\\\"><span style=\\\"background-color:#ffffff\\\"><span style=\\\"text-decoration-thickness:initial\\\"><span style=\\\"text-decoration-style:initial\\\"><span style=\\\"text-decoration-color:initial\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.&nbsp;<\\/font><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.<\\/font><\\/font><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/Tin-tuc/blog4.png', NULL, 0, 2, 4, 'active', 1, 1, '2023-04-07 02:00:26', '2023-07-10 03:39:43', 'suy-nghi-ve-viec-ren-luyen'),
 (138, 1, 'post', 'Yoga tăng sức mạnh', '{\"brief\":{\"vi\":\"Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.\\u00a0T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.\"},\"content\":{\"vi\":\"<p><span style=\\\"font-size:var(--h2_typography-font-size)\\\"><span style=\\\"box-sizing:border-box\\\"><span style=\\\"font-family:var(--h2_typography-font-family)\\\"><span style=\\\"font-weight:var(--h2_typography-font-weight)\\\"><span style=\\\"line-height:var(--h2_typography-line-height)\\\"><span style=\\\"letter-spacing:var(--h2_typography-letter-spacing)\\\"><span style=\\\"font-style:normal\\\"><span style=\\\"color:var(--h2_typography-color)\\\"><span style=\\\"font-variant-ligatures:normal\\\"><span style=\\\"white-space:normal\\\"><span style=\\\"background-color:#ffffff\\\"><span style=\\\"text-decoration-thickness:initial\\\"><span style=\\\"text-decoration-style:initial\\\"><span style=\\\"text-decoration-color:initial\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.&nbsp;<\\/font><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.<\\/font><\\/font><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/Tin-tuc/blog5.png', NULL, 0, 0, 5, 'active', 1, 1, '2023-04-07 02:01:29', '2023-07-08 03:37:54', 'yoga-tang-suc-manh'),
 (139, 1, 'post', 'Yoga và 6 giá trị lợi ích cho trẻ ở độ tuổi đi học', '{\"brief\":{\"vi\":\"Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.\\u00a0T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.\"},\"content\":{\"vi\":\"<p><span style=\\\"font-size:var(--h2_typography-font-size)\\\"><span style=\\\"box-sizing:border-box\\\"><span style=\\\"font-family:var(--h2_typography-font-family)\\\"><span style=\\\"font-weight:var(--h2_typography-font-weight)\\\"><span style=\\\"line-height:var(--h2_typography-line-height)\\\"><span style=\\\"letter-spacing:var(--h2_typography-letter-spacing)\\\"><span style=\\\"font-style:normal\\\"><span style=\\\"color:var(--h2_typography-color)\\\"><span style=\\\"font-variant-ligatures:normal\\\"><span style=\\\"white-space:normal\\\"><span style=\\\"background-color:#ffffff\\\"><span style=\\\"text-decoration-thickness:initial\\\"><span style=\\\"text-decoration-style:initial\\\"><span style=\\\"text-decoration-color:initial\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\"><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">Tr\\u1edf th\\u00e0nh th\\u00e0nh vi\\u00ean Yoga Studio \\u0111\\u1ec3 t\\u1eadp yoga t\\u1ea1i ng\\u00f4i nh\\u00e0 \\u0111\\u00edch th\\u1ef1c.&nbsp;<\\/font><font style=\\\"box-sizing:border-box; vertical-align:inherit\\\">T\\u1eadn h\\u01b0\\u1edfng m\\u1ee9c gi\\u00e1 \\u0111\\u1eb7c bi\\u1ec7t v\\u00e0 ti\\u1ebfp c\\u1eadn ch\\u01b0\\u01a1ng tr\\u00ecnh yoga Iyengar phong ph\\u00fa c\\u1ee7a ch\\u00fang t\\u00f4i, v\\u1edbi nh\\u1eefng gi\\u00e1o vi\\u00ean tuy\\u1ec7t v\\u1eddi v\\u00e0 nh\\u1eefng ng\\u01b0\\u1eddi c\\u00f3 c\\u00f9ng ch\\u00ed h\\u01b0\\u1edbng.<\\/font><\\/font><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/span><\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', '/data/cms-image/Tin-tuc/blog6.png', NULL, 0, 0, 6, 'active', 1, 1, '2023-04-07 02:03:20', '2023-07-08 03:38:10', 'yoga-va-6-gia-tri-loi-ich-cho-tre-o-do-tuoi-di-hoc'),
-(147, 45, 'product', 'Gói tập 1 tháng', '{\"price\":\"50\",\"brand\":\"Maison\",\"brief\":{\"vi\":\"<ul>\\r\\n\\t<li>D\\u00e0nh cho ng\\u01b0\\u1eddi b\\u1eadn r\\u1ed9n<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>Tr\\u1ea3i nghi\\u1ec7m luy\\u1ec7n t\\u1eadp an to\\u00e0n v\\u00e0 vui v\\u1ebb<\\/li>\\r\\n\\t<li>Chi ph\\u00ed th\\u1ea5p<\\/li>\\r\\n<\\/ul>\"},\"content\":{\"vi\":\"<p>B\\u1ea1n l\\u00e0 ng\\u01b0\\u1eddi m\\u1edbi v\\u00e0 c\\u00f2n b\\u1ee1 ng\\u1ee1 v\\u1edbi b\\u1ed9 m\\u00f4n Yoga ho\\u1eb7c ch\\u01b0a bao gi\\u1edd tham gia l\\u1edbp h\\u1ecdc yoga tr\\u01b0\\u1edbc \\u0111\\u00e2y th\\u00ec g\\u00f3i t\\u1eadp 12 bu\\u1ed5i l\\u00e0 l\\u1ef1a ch\\u1ecdn cho b\\u1ea1n.<\\/p>\\r\\n\\r\\n<p>Hi\\u1ec3u \\u0111\\u01b0\\u1ee3c c\\u00e1c kh\\u00e1i ni\\u1ec7m c\\u01a1 b\\u1ea3n v\\u1ec1 yoga v\\u00e0 th\\u1ef1c h\\u00e0nh t\\u1eadp luy\\u1ec7n \\u0111\\u1ec3 c\\u00f3 c\\u01a1 th\\u1ec3 d\\u1ebbo dai kho\\u1ebb m\\u1ea1nh.<\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null,\"gallery_image\":{\"1680838448453\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-2.png\",\"1680838455163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-5.png\",\"1680838475163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-4.png\",\"1680838480689\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-1.png\",\"1680838491049\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-3.png\"}}', NULL, NULL, 1, 85, 1, 'active', 1, 1, '2023-02-08 03:17:46', '2023-07-04 07:19:51', 'goi-tap-1-thang'),
-(150, 45, 'product', 'Gói tập 12 buổi', '{\"price\":\"20\",\"brand\":\"Maison\",\"brief\":{\"vi\":\"<ul>\\r\\n\\t<li>D\\u00e0nh cho ng\\u01b0\\u1eddi b\\u1eadn r\\u1ed9n<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>Tr\\u1ea3i nghi\\u1ec7m luy\\u1ec7n t\\u1eadp an to\\u00e0n v\\u00e0 vui v\\u1ebb<\\/li>\\r\\n\\t<li>Chi ph\\u00ed th\\u1ea5p<\\/li>\\r\\n<\\/ul>\"},\"content\":{\"vi\":\"<p>B\\u1ea1n l\\u00e0 ng\\u01b0\\u1eddi m\\u1edbi v\\u00e0 c\\u00f2n b\\u1ee1 ng\\u1ee1 v\\u1edbi b\\u1ed9 m\\u00f4n Yoga ho\\u1eb7c ch\\u01b0a bao gi\\u1edd tham gia l\\u1edbp h\\u1ecdc yoga tr\\u01b0\\u1edbc \\u0111\\u00e2y th\\u00ec g\\u00f3i t\\u1eadp 12 bu\\u1ed5i l\\u00e0 l\\u1ef1a ch\\u1ecdn cho b\\u1ea1n.<\\/p>\\r\\n\\r\\n<p>Hi\\u1ec3u \\u0111\\u01b0\\u1ee3c c\\u00e1c kh\\u00e1i ni\\u1ec7m c\\u01a1 b\\u1ea3n v\\u1ec1 yoga v\\u00e0 th\\u1ef1c h\\u00e0nh t\\u1eadp luy\\u1ec7n \\u0111\\u1ec3 c\\u00f3 c\\u01a1 th\\u1ec3 d\\u1ebbo dai kho\\u1ebb m\\u1ea1nh.<\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null,\"gallery_image\":{\"1680838448453\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-2.png\",\"1680838455163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-5.png\",\"1680838475163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-4.png\",\"1680838480689\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-1.png\",\"1680838491049\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-3.png\"},\"related_post\":[\"147\"]}', NULL, NULL, 1, 169, 1, 'active', 1, 1, '2023-02-08 03:17:46', '2023-07-07 01:50:19', 'goi-tap-12-buoi'),
-(153, 45, 'product', 'Gói tập 12 buổi', '{\"price\":\"20\",\"brand\":\"Maison\",\"brief\":{\"vi\":\"<ul>\\r\\n\\t<li>D\\u00e0nh cho ng\\u01b0\\u1eddi b\\u1eadn r\\u1ed9n<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>Tr\\u1ea3i nghi\\u1ec7m luy\\u1ec7n t\\u1eadp an to\\u00e0n v\\u00e0 vui v\\u1ebb<\\/li>\\r\\n\\t<li>Chi ph\\u00ed th\\u1ea5p<\\/li>\\r\\n<\\/ul>\"},\"content\":{\"vi\":\"<p>B\\u1ea1n l\\u00e0 ng\\u01b0\\u1eddi m\\u1edbi v\\u00e0 c\\u00f2n b\\u1ee1 ng\\u1ee1 v\\u1edbi b\\u1ed9 m\\u00f4n Yoga ho\\u1eb7c ch\\u01b0a bao gi\\u1edd tham gia l\\u1edbp h\\u1ecdc yoga tr\\u01b0\\u1edbc \\u0111\\u00e2y th\\u00ec g\\u00f3i t\\u1eadp 12 bu\\u1ed5i l\\u00e0 l\\u1ef1a ch\\u1ecdn cho b\\u1ea1n.<\\/p>\\r\\n\\r\\n<p>Hi\\u1ec3u \\u0111\\u01b0\\u1ee3c c\\u00e1c kh\\u00e1i ni\\u1ec7m c\\u01a1 b\\u1ea3n v\\u1ec1 yoga v\\u00e0 th\\u1ef1c h\\u00e0nh t\\u1eadp luy\\u1ec7n \\u0111\\u1ec3 c\\u00f3 c\\u01a1 th\\u1ec3 d\\u1ebbo dai kho\\u1ebb m\\u1ea1nh.<\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null,\"gallery_image\":{\"1680838448453\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-2.png\",\"1680838455163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-5.png\",\"1680838475163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-4.png\",\"1680838480689\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-1.png\",\"1680838491049\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-3.png\"},\"related_post\":[\"147\"]}', NULL, NULL, 1, 186, 1, 'active', 1, 1, '2023-02-08 03:17:46', '2023-07-06 09:32:42', 'goi-tap-10-buoi'),
-(154, 45, 'product', 'Gói tập 2 tháng', '{\"price\":\"50\",\"brand\":\"Maison\",\"brief\":{\"vi\":\"<ul>\\r\\n\\t<li>D\\u00e0nh cho ng\\u01b0\\u1eddi b\\u1eadn r\\u1ed9n<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>Tr\\u1ea3i nghi\\u1ec7m luy\\u1ec7n t\\u1eadp an to\\u00e0n v\\u00e0 vui v\\u1ebb<\\/li>\\r\\n\\t<li>Chi ph\\u00ed th\\u1ea5p<\\/li>\\r\\n<\\/ul>\"},\"content\":{\"vi\":\"<p>B\\u1ea1n l\\u00e0 ng\\u01b0\\u1eddi m\\u1edbi v\\u00e0 c\\u00f2n b\\u1ee1 ng\\u1ee1 v\\u1edbi b\\u1ed9 m\\u00f4n Yoga ho\\u1eb7c ch\\u01b0a bao gi\\u1edd tham gia l\\u1edbp h\\u1ecdc yoga tr\\u01b0\\u1edbc \\u0111\\u00e2y th\\u00ec g\\u00f3i t\\u1eadp 12 bu\\u1ed5i l\\u00e0 l\\u1ef1a ch\\u1ecdn cho b\\u1ea1n.<\\/p>\\r\\n\\r\\n<p>Hi\\u1ec3u \\u0111\\u01b0\\u1ee3c c\\u00e1c kh\\u00e1i ni\\u1ec7m c\\u01a1 b\\u1ea3n v\\u1ec1 yoga v\\u00e0 th\\u1ef1c h\\u00e0nh t\\u1eadp luy\\u1ec7n \\u0111\\u1ec3 c\\u00f3 c\\u01a1 th\\u1ec3 d\\u1ebbo dai kho\\u1ebb m\\u1ea1nh.<\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null,\"gallery_image\":{\"1680838448453\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-2.png\",\"1680838455163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-5.png\",\"1680838475163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-4.png\",\"1680838480689\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-1.png\",\"1680838491049\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-3.png\"}}', NULL, NULL, 1, 101, 1, 'active', 1, 1, '2023-02-08 03:17:46', '2023-07-05 18:43:10', 'goi-tap-2-thang');
+(147, 45, 'product', 'Gói tập 1 tháng', '{\"price\":\"50\",\"brand\":\"Maison\",\"brief\":{\"vi\":\"<ul>\\r\\n\\t<li>D\\u00e0nh cho ng\\u01b0\\u1eddi b\\u1eadn r\\u1ed9n<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>Tr\\u1ea3i nghi\\u1ec7m luy\\u1ec7n t\\u1eadp an to\\u00e0n v\\u00e0 vui v\\u1ebb<\\/li>\\r\\n\\t<li>Chi ph\\u00ed th\\u1ea5p<\\/li>\\r\\n<\\/ul>\"},\"content\":{\"vi\":\"<p>B\\u1ea1n l\\u00e0 ng\\u01b0\\u1eddi m\\u1edbi v\\u00e0 c\\u00f2n b\\u1ee1 ng\\u1ee1 v\\u1edbi b\\u1ed9 m\\u00f4n Yoga ho\\u1eb7c ch\\u01b0a bao gi\\u1edd tham gia l\\u1edbp h\\u1ecdc yoga tr\\u01b0\\u1edbc \\u0111\\u00e2y th\\u00ec g\\u00f3i t\\u1eadp 12 bu\\u1ed5i l\\u00e0 l\\u1ef1a ch\\u1ecdn cho b\\u1ea1n.<\\/p>\\r\\n\\r\\n<p>Hi\\u1ec3u \\u0111\\u01b0\\u1ee3c c\\u00e1c kh\\u00e1i ni\\u1ec7m c\\u01a1 b\\u1ea3n v\\u1ec1 yoga v\\u00e0 th\\u1ef1c h\\u00e0nh t\\u1eadp luy\\u1ec7n \\u0111\\u1ec3 c\\u00f3 c\\u01a1 th\\u1ec3 d\\u1ebbo dai kho\\u1ebb m\\u1ea1nh.<\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null,\"gallery_image\":{\"1680838448453\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-2.png\",\"1680838455163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-5.png\",\"1680838475163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-4.png\",\"1680838480689\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-1.png\",\"1680838491049\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-3.png\"}}', NULL, NULL, 1, 87, 1, 'active', 1, 1, '2023-02-08 03:17:46', '2023-07-10 06:54:31', 'goi-tap-1-thang'),
+(150, 45, 'product', 'Gói tập 12 buổi', '{\"price\":\"20\",\"brand\":\"Maison\",\"brief\":{\"vi\":\"<ul>\\r\\n\\t<li>D\\u00e0nh cho ng\\u01b0\\u1eddi b\\u1eadn r\\u1ed9n<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>Tr\\u1ea3i nghi\\u1ec7m luy\\u1ec7n t\\u1eadp an to\\u00e0n v\\u00e0 vui v\\u1ebb<\\/li>\\r\\n\\t<li>Chi ph\\u00ed th\\u1ea5p<\\/li>\\r\\n<\\/ul>\"},\"content\":{\"vi\":\"<p>B\\u1ea1n l\\u00e0 ng\\u01b0\\u1eddi m\\u1edbi v\\u00e0 c\\u00f2n b\\u1ee1 ng\\u1ee1 v\\u1edbi b\\u1ed9 m\\u00f4n Yoga ho\\u1eb7c ch\\u01b0a bao gi\\u1edd tham gia l\\u1edbp h\\u1ecdc yoga tr\\u01b0\\u1edbc \\u0111\\u00e2y th\\u00ec g\\u00f3i t\\u1eadp 12 bu\\u1ed5i l\\u00e0 l\\u1ef1a ch\\u1ecdn cho b\\u1ea1n.<\\/p>\\r\\n\\r\\n<p>Hi\\u1ec3u \\u0111\\u01b0\\u1ee3c c\\u00e1c kh\\u00e1i ni\\u1ec7m c\\u01a1 b\\u1ea3n v\\u1ec1 yoga v\\u00e0 th\\u1ef1c h\\u00e0nh t\\u1eadp luy\\u1ec7n \\u0111\\u1ec3 c\\u00f3 c\\u01a1 th\\u1ec3 d\\u1ebbo dai kho\\u1ebb m\\u1ea1nh.<\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null,\"gallery_image\":{\"1680838448453\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-2.png\",\"1680838455163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-5.png\",\"1680838475163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-4.png\",\"1680838480689\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-1.png\",\"1680838491049\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-3.png\"},\"related_post\":[\"147\"]}', NULL, NULL, 1, 184, 1, 'active', 1, 1, '2023-02-08 03:17:46', '2023-07-10 06:57:50', 'goi-tap-12-buoi'),
+(153, 45, 'product', 'Gói tập 12 buổi', '{\"price\":\"20\",\"brand\":\"Maison\",\"brief\":{\"vi\":\"<ul>\\r\\n\\t<li>D\\u00e0nh cho ng\\u01b0\\u1eddi b\\u1eadn r\\u1ed9n<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>Tr\\u1ea3i nghi\\u1ec7m luy\\u1ec7n t\\u1eadp an to\\u00e0n v\\u00e0 vui v\\u1ebb<\\/li>\\r\\n\\t<li>Chi ph\\u00ed th\\u1ea5p<\\/li>\\r\\n<\\/ul>\"},\"content\":{\"vi\":\"<p>B\\u1ea1n l\\u00e0 ng\\u01b0\\u1eddi m\\u1edbi v\\u00e0 c\\u00f2n b\\u1ee1 ng\\u1ee1 v\\u1edbi b\\u1ed9 m\\u00f4n Yoga ho\\u1eb7c ch\\u01b0a bao gi\\u1edd tham gia l\\u1edbp h\\u1ecdc yoga tr\\u01b0\\u1edbc \\u0111\\u00e2y th\\u00ec g\\u00f3i t\\u1eadp 12 bu\\u1ed5i l\\u00e0 l\\u1ef1a ch\\u1ecdn cho b\\u1ea1n.<\\/p>\\r\\n\\r\\n<p>Hi\\u1ec3u \\u0111\\u01b0\\u1ee3c c\\u00e1c kh\\u00e1i ni\\u1ec7m c\\u01a1 b\\u1ea3n v\\u1ec1 yoga v\\u00e0 th\\u1ef1c h\\u00e0nh t\\u1eadp luy\\u1ec7n \\u0111\\u1ec3 c\\u00f3 c\\u01a1 th\\u1ec3 d\\u1ebbo dai kho\\u1ebb m\\u1ea1nh.<\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null,\"gallery_image\":{\"1680838448453\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-2.png\",\"1680838455163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-5.png\",\"1680838475163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-4.png\",\"1680838480689\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-1.png\",\"1680838491049\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-3.png\"},\"related_post\":[\"147\"]}', NULL, NULL, 1, 188, 1, 'active', 1, 1, '2023-02-08 03:17:46', '2023-07-10 03:45:28', 'goi-tap-10-buoi'),
+(154, 45, 'product', 'Gói tập 2 tháng', '{\"price\":\"50\",\"brand\":\"Maison\",\"brief\":{\"vi\":\"<ul>\\r\\n\\t<li>D\\u00e0nh cho ng\\u01b0\\u1eddi b\\u1eadn r\\u1ed9n<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>C\\u00f3 ki\\u1ebfn th\\u1ee9c v\\u1ec1 Yoga<\\/li>\\r\\n\\t<li>Tr\\u1ea3i nghi\\u1ec7m luy\\u1ec7n t\\u1eadp an to\\u00e0n v\\u00e0 vui v\\u1ebb<\\/li>\\r\\n\\t<li>Chi ph\\u00ed th\\u1ea5p<\\/li>\\r\\n<\\/ul>\"},\"content\":{\"vi\":\"<p>B\\u1ea1n l\\u00e0 ng\\u01b0\\u1eddi m\\u1edbi v\\u00e0 c\\u00f2n b\\u1ee1 ng\\u1ee1 v\\u1edbi b\\u1ed9 m\\u00f4n Yoga ho\\u1eb7c ch\\u01b0a bao gi\\u1edd tham gia l\\u1edbp h\\u1ecdc yoga tr\\u01b0\\u1edbc \\u0111\\u00e2y th\\u00ec g\\u00f3i t\\u1eadp 12 bu\\u1ed5i l\\u00e0 l\\u1ef1a ch\\u1ecdn cho b\\u1ea1n.<\\/p>\\r\\n\\r\\n<p>Hi\\u1ec3u \\u0111\\u01b0\\u1ee3c c\\u00e1c kh\\u00e1i ni\\u1ec7m c\\u01a1 b\\u1ea3n v\\u1ec1 yoga v\\u00e0 th\\u1ef1c h\\u00e0nh t\\u1eadp luy\\u1ec7n \\u0111\\u1ec3 c\\u00f3 c\\u01a1 th\\u1ec3 d\\u1ebbo dai kho\\u1ebb m\\u1ea1nh.<\\/p>\"},\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null,\"gallery_image\":{\"1680838448453\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-2.png\",\"1680838455163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-5.png\",\"1680838475163\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-4.png\",\"1680838480689\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-1.png\",\"1680838491049\":\"\\/data\\/cms-image\\/San-pham\\/binh-an-1808-3.png\"}}', NULL, NULL, 1, 107, 1, 'active', 1, 1, '2023-02-08 03:17:46', '2023-07-17 02:07:41', 'goi-tap-2-thang');
 
 -- --------------------------------------------------------
 
@@ -581,18 +580,18 @@ INSERT INTO `tb_cms_posts` (`id`, `taxonomy_id`, `is_type`, `title`, `json_param
 
 CREATE TABLE `tb_cms_taxonomys` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `taxonomy` varchar(255) NOT NULL,
+  `taxonomy` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
-  `title` varchar(255) NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
   `is_featured` tinyint(1) NOT NULL DEFAULT 0,
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `alias` varchar(255) DEFAULT NULL
+  `alias` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -617,16 +616,16 @@ INSERT INTO `tb_cms_taxonomys` (`id`, `taxonomy`, `parent_id`, `title`, `json_pa
 
 CREATE TABLE `tb_components` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `component_code` varchar(255) DEFAULT NULL,
+  `component_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
-  `title` varchar(255) NOT NULL,
-  `brief` text DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `brief` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
-  `image` varchar(255) DEFAULT NULL,
-  `image_background` varchar(255) DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image_background` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -655,13 +654,13 @@ INSERT INTO `tb_components` (`id`, `component_code`, `parent_id`, `title`, `brie
 
 CREATE TABLE `tb_component_configs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
-  `component_code` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `component_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
   `is_config` tinyint(1) NOT NULL DEFAULT 1,
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -685,16 +684,16 @@ INSERT INTO `tb_component_configs` (`id`, `name`, `description`, `component_code
 
 CREATE TABLE `tb_contacts` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `is_type` varchar(255) DEFAULT 'contact',
-  `name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `subject` varchar(255) DEFAULT NULL,
-  `content` text DEFAULT NULL,
-  `admin_note` text DEFAULT NULL,
+  `is_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'contact',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -710,8 +709,9 @@ INSERT INTO `tb_contacts` (`id`, `is_type`, `name`, `email`, `phone`, `subject`,
 (16, 'newsletter', NULL, 'thangnh.edu@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, 'active', NULL, NULL, '2022-09-13 09:54:38', '2022-09-13 09:54:38'),
 (19, 'call_request', 'Thắng Nguyễn 2', 'thangnh.edu@gmail.com', '0912 568 999', NULL, 'Thử chức năng trên fhm', NULL, NULL, NULL, 'new', NULL, NULL, '2022-10-08 07:14:54', '2022-10-08 07:14:54'),
 (22, 'contact', 'Thắng Nguyễn 2', 'huuthangb2k50@gmail.com', '0912 568 999', NULL, 'Liên hệ lại cho tôi nhé', NULL, NULL, NULL, 'new', NULL, NULL, '2022-10-11 07:07:33', '2022-10-11 07:07:33'),
-(56, 'contact', 'Đỗ Như Thanh', 'thanhkudo1011998@gmail.com', '0355820911', NULL, NULL, NULL, '{\"product\":\"150\",\"payment\":\"direct\"}', NULL, 'new', NULL, NULL, '2023-07-08 08:06:08', '2023-07-08 08:06:08'),
-(58, 'call_request', 'Thanh Kudo', NULL, '0355820911', NULL, NULL, NULL, '{\"height\":\"165\",\"weight\":\"65\",\"gender\":\"male\",\"year\":\"1998\",\"studied\":\"no\",\"is_injury\":\"no\",\"is_sick\":\"no\",\"time\":\"yes\"}', NULL, 'new', NULL, NULL, '2023-07-08 09:39:24', '2023-07-08 09:39:24');
+(56, 'contact', 'Đỗ Như Thanh', 'thanhkudo1011998@gmail.com', '0355820911', NULL, NULL, NULL, '{\"product\":\"150\",\"payment\":\"direct\"}', NULL, 'processing', NULL, 3, '2023-07-08 08:06:08', '2023-07-10 01:55:09'),
+(58, 'call_request', 'Thanh Kudo', NULL, '0355820911', NULL, NULL, NULL, '{\"height\":\"165\",\"weight\":\"65\",\"gender\":\"male\",\"year\":\"1998\",\"studied\":\"no\",\"is_injury\":\"no\",\"is_sick\":\"no\",\"time\":\"yes\"}', NULL, 'processing', NULL, 3, '2023-07-08 09:39:24', '2023-07-10 01:55:03'),
+(59, 'contact', 'tuonglee1001@gmail.com', 'tuonglee1001@gmail.com', '0388830059', NULL, NULL, NULL, '{\"product\":\"147\",\"payment\":\"card\"}', NULL, 'new', NULL, NULL, '2023-07-10 06:57:48', '2023-07-10 06:57:48');
 
 -- --------------------------------------------------------
 
@@ -723,10 +723,10 @@ CREATE TABLE `tb_logs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `url_referer` text DEFAULT NULL,
-  `url` text DEFAULT NULL,
-  `method` varchar(255) DEFAULT NULL,
-  `params` text DEFAULT NULL,
+  `url_referer` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `params` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `logged_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -739,14 +739,14 @@ CREATE TABLE `tb_logs` (
 CREATE TABLE `tb_menus` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `parent_id` int(11) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
-  `url_link` varchar(255) DEFAULT NULL,
-  `menu_type` varchar(255) DEFAULT NULL,
-  `system_code` varchar(255) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `menu_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `system_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -802,11 +802,11 @@ INSERT INTO `tb_menus` (`id`, `parent_id`, `name`, `description`, `url_link`, `m
 
 CREATE TABLE `tb_modules` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `module_code` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
+  `module_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -843,11 +843,11 @@ INSERT INTO `tb_modules` (`id`, `module_code`, `name`, `description`, `iorder`, 
 CREATE TABLE `tb_module_functions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `module_id` bigint(20) UNSIGNED NOT NULL,
-  `function_code` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
+  `function_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -958,9 +958,9 @@ INSERT INTO `tb_module_functions` (`id`, `module_id`, `function_code`, `name`, `
 
 CREATE TABLE `tb_options` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `option_name` varchar(255) NOT NULL,
-  `option_value` longtext NOT NULL,
-  `description` text DEFAULT NULL,
+  `option_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `option_value` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `is_system_param` tinyint(1) DEFAULT 1,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -973,8 +973,8 @@ CREATE TABLE `tb_options` (
 --
 
 INSERT INTO `tb_options` (`id`, `option_name`, `option_value`, `description`, `is_system_param`, `admin_created_id`, `admin_updated_id`, `created_at`, `updated_at`) VALUES
-(2, 'information', '{\"site_name\":\"YOGA STUDIO\",\"brief\":\"Cung c\\u1ea5p c\\u00e1c l\\u1edbp h\\u1ecdc Yoga l\\u1ee3i \\u00edch to\\u00e0n di\\u1ec7n v\\u1edbi ph\\u01b0\\u01a1ng ph\\u00e1p luy\\u1ec7n t\\u1eadp hi\\u1ec7u qu\\u1ea3, d\\u1ec5 d\\u00e0ng\",\"phone\":\"0963 636 363\",\"hotline\":\"0963 636 363\",\"appointment\":\"8:00 - 21:00 Mon - Sun\",\"email\":\"yoga@gmail.com\",\"address\":\"S\\u1ed1 12 BT1 Vinaconex3, Trung V\\u0103n, Ph\\u01b0\\u1eddng Trung V\\u0103n, Qu\\u1eadn Nam T\\u1eeb Li\\u00eam, Th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i, Vi\\u1ec7t Nam\",\"footer\":\"TR\\u1ede TH\\u00c0NH H\\u1ed8I VI\\u00caN & H\\u01af\\u1edeNG \\u01afU \\u0110\\u00c3I 20%\",\"link_footer\":\"\\/lien-he\",\"copyright\":\"\\u00a9 2023 yoga studio, All Rights Reserved\",\"seo_title\":null,\"seo_keyword\":null,\"seo_description\":null}', 'Các dữ liệu cấu trúc liên quan đến thông tin liên hệ của hệ thống website', 0, 1, 1, '2021-10-02 05:06:00', '2023-07-08 09:48:28'),
-(5, 'image', '{\"logo_header\":\"\\/data\\/cms-image\\/Logo\\/logo.png\",\"logo_footer\":\"\\/data\\/cms-image\\/Logo\\/logo.png\",\"favicon\":\"\\/data\\/cms-image\\/Logo\\/logo.png\",\"background_breadcrumbs\":\"\\/data\\/cms-image\\/Images\\/banner4.png\",\"seo_og_image\":\"\\/data\\/cms-image\\/Logo\\/logo.png\",\"image_paymen\":\"\"}', 'Danh sách các hình ảnh cấu hình trên hệ thống tại các vị trí', 0, 1, 1, '2021-10-11 09:22:56', '2023-07-05 07:23:39'),
+(2, 'information', '{\"site_name\":\"YOGA STUDIO\",\"brief\":\"Cung c\\u1ea5p c\\u00e1c l\\u1edbp h\\u1ecdc Yoga l\\u1ee3i \\u00edch to\\u00e0n di\\u1ec7n v\\u1edbi ph\\u01b0\\u01a1ng ph\\u00e1p luy\\u1ec7n t\\u1eadp hi\\u1ec7u qu\\u1ea3, d\\u1ec5 d\\u00e0ng\",\"phone\":\"0963 636 363\",\"hotline\":\"0963 636 363\",\"appointment\":\"8:00 - 21:00 Mon - Sun\",\"email\":\"yoga@gmail.com\",\"address\":\"S\\u1ed1 12 BT1 Vinaconex3, Trung V\\u0103n, Ph\\u01b0\\u1eddng Trung V\\u0103n, Qu\\u1eadn Nam T\\u1eeb Li\\u00eam, Th\\u00e0nh ph\\u1ed1 H\\u00e0 N\\u1ed9i, Vi\\u1ec7t Nam\",\"footer\":\"TR\\u1ede TH\\u00c0NH H\\u1ed8I VI\\u00caN & H\\u01af\\u1edeNG \\u01afU \\u0110\\u00c3I 20%\",\"link_footer\":\"\\/lien-he\",\"copyright\":\"\\u00a9 2023 yoga studio, All Rights Reserved\",\"seo_title\":\"YOGA STUDIO\",\"seo_keyword\":\"Cung c\\u1ea5p c\\u00e1c l\\u1edbp h\\u1ecdc Yoga l\\u1ee3i \\u00edch to\\u00e0n di\\u1ec7n v\\u1edbi ph\\u01b0\\u01a1ng ph\\u00e1p luy\\u1ec7n t\\u1eadp hi\\u1ec7u qu\\u1ea3, d\\u1ec5 d\\u00e0ng\",\"seo_description\":\"Cung c\\u1ea5p c\\u00e1c l\\u1edbp h\\u1ecdc Yoga l\\u1ee3i \\u00edch to\\u00e0n di\\u1ec7n v\\u1edbi ph\\u01b0\\u01a1ng ph\\u00e1p luy\\u1ec7n t\\u1eadp hi\\u1ec7u qu\\u1ea3, d\\u1ec5 d\\u00e0ng\"}', 'Các dữ liệu cấu trúc liên quan đến thông tin liên hệ của hệ thống website', 0, 1, 1, '2021-10-02 05:06:00', '2023-07-10 06:57:26'),
+(5, 'image', '{\"logo_header\":\"\\/data\\/cms-image\\/Logo\\/logo.jpg\",\"logo_footer\":\"\\/data\\/cms-image\\/Logo\\/logo.jpg\",\"favicon\":\"\\/data\\/cms-image\\/Logo\\/logo.png\",\"background_breadcrumbs\":\"\\/data\\/cms-image\\/Images\\/banner4.png\",\"seo_og_image\":\"\\/data\\/cms-image\\/Logo\\/logo.png\",\"image_paymen\":null}', 'Danh sách các hình ảnh cấu hình trên hệ thống tại các vị trí', 0, 1, 1, '2021-10-11 09:22:56', '2023-07-11 04:10:02'),
 (6, 'social', '{\"facebook\":\"https:\\/\\/www.facebook.com\\/thaiever.vn\",\"youtube\":\"#\",\"instagram\":\"#\",\"tiktok\":\"#\",\"call_now\":\"0963 636 363\",\"zalo\":\"https:\\/\\/zalo.me\\/0904606102\"}', 'Danh sách các Social network của hệ thống', 0, 1, 1, '2022-02-14 10:35:40', '2023-07-04 03:22:14'),
 (7, 'page', '{\r\n\"frontend.home\":  1\r\n}', NULL, 0, 1, 1, '2022-05-26 11:03:52', '2022-06-09 04:03:39'),
 (8, 'source_code', '{\"header\":null,\"footer\":null,\"map\":\"<iframe src=\\\"https:\\/\\/www.google.com\\/maps\\/embed?pb=!1m18!1m12!1m3!1d3724.0195064744694!2d105.78888961576648!3d21.03190548599662!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ade7a42a41c7%3A0xd0905b6cacd304da!2zQ8O0bmcgdHkgY-G7lSBwaOG6p24gdGjGsMahbmcgbeG6oWkgRkhNIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1681177457701!5m2!1svi!2s\\\" width=\\\"100%\\\" height=\\\"500\\\" style=\\\"border:0;\\\" allowfullscreen=\\\"\\\" loading=\\\"lazy\\\" referrerpolicy=\\\"no-referrer-when-downgrade\\\"><\\/iframe>\"}', NULL, 0, 1, 1, '2022-06-07 02:24:11', '2023-07-05 04:49:49');
@@ -987,17 +987,17 @@ INSERT INTO `tb_options` (`id`, `option_name`, `option_value`, `description`, `i
 
 CREATE TABLE `tb_orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `is_type` varchar(255) NOT NULL DEFAULT 'product',
+  `is_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'product',
   `customer_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
-  `customer_note` text DEFAULT NULL,
-  `admin_note` text DEFAULT NULL,
+  `customer_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
-  `status` varchar(255) NOT NULL DEFAULT 'new',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'new',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1024,10 +1024,10 @@ CREATE TABLE `tb_order_details` (
   `quantity` int(11) DEFAULT NULL,
   `price` double(20,2) DEFAULT NULL,
   `discount` double(20,2) DEFAULT NULL,
-  `customer_note` text DEFAULT NULL,
-  `admin_note` text DEFAULT NULL,
+  `customer_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `admin_note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
-  `status` varchar(255) DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1055,16 +1055,16 @@ INSERT INTO `tb_order_details` (`id`, `order_id`, `item_id`, `quantity`, `price`
 
 CREATE TABLE `tb_pages` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `keyword` text DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
-  `route_name` varchar(255) NOT NULL,
-  `alias` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `keyword` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `route_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alias` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1092,14 +1092,14 @@ INSERT INTO `tb_pages` (`id`, `name`, `title`, `keyword`, `description`, `conten
 
 CREATE TABLE `tb_popups` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `content` text DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
   `start_time` datetime DEFAULT NULL,
   `end_time` datetime DEFAULT NULL,
   `duration` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1133,7 +1133,7 @@ CREATE TABLE `tb_product_detail` (
   `json_product` longtext DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `tb_product_detail`
@@ -1174,7 +1174,7 @@ CREATE TABLE `tb_reviews` (
   `status` varchar(255) NOT NULL DEFAULT 'new',
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `tb_reviews`
@@ -1197,11 +1197,11 @@ INSERT INTO `tb_reviews` (`id`, `id_product`, `name`, `email`, `comment`, `ratin
 
 CREATE TABLE `tb_roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_access` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_access`)),
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1214,7 +1214,7 @@ CREATE TABLE `tb_roles` (
 
 INSERT INTO `tb_roles` (`id`, `name`, `description`, `json_access`, `iorder`, `status`, `admin_created_id`, `admin_updated_id`, `created_at`, `updated_at`) VALUES
 (1, 'Quyền quản trị nội dung', 'Dành cho nhân viên thiết kế và cập nhật nội dung', '{\"menu_id\":[\"72\",\"62\",\"59\",\"51\",\"52\",\"53\",\"73\",\"13\",\"70\",\"46\",\"45\",\"44\",\"71\",\"58\",\"42\",\"41\",\"17\"],\"function_code\":[\"contacts.index\",\"contacts.create\",\"contacts.store\",\"contacts.edit\",\"contacts.update\",\"cms_taxonomys.index\",\"cms_taxonomys.create\",\"cms_taxonomys.store\",\"cms_taxonomys.edit\",\"cms_taxonomys.update\",\"cms_posts.index\",\"cms_posts.create\",\"cms_posts.store\",\"cms_posts.edit\",\"cms_posts.update\",\"call_request.index\",\"call_request.show\",\"call_request.update\",\"cms_products.index\",\"cms_products.create\",\"cms_products.store\",\"cms_products.edit\",\"cms_products.update\",\"web.social\",\"web.social.update\",\"web.information\",\"web.information.update\",\"web.image\",\"web.image.update\",\"web.source\",\"web.source.update\",\"menus.index\",\"menus.create\",\"menus.store\",\"menus.edit\",\"menus.update\",\"pages.index\",\"pages.create\",\"pages.store\",\"pages.edit\",\"pages.update\",\"block_contents.index\",\"block_contents.create\",\"block_contents.store\",\"block_contents.edit\",\"block_contents.update\",\"admins.index\",\"admins.create\",\"admins.store\",\"admins.edit\",\"admins.update\"]}', 1, 'active', 1, 1, '2021-10-02 10:59:48', '2023-07-08 08:04:35'),
-(2, 'Quản trị hệ thống', 'Quyền dành cho người quản trị hệ thống', '{\"menu_id\":[\"72\",\"62\",\"59\",\"51\",\"52\",\"53\",\"73\",\"13\",\"70\",\"46\",\"45\",\"44\",\"71\",\"58\",\"42\",\"41\",\"17\",\"10\",\"3\",\"5\",\"6\",\"76\",\"77\",\"79\",\"78\",\"80\"],\"function_code\":[\"contacts.index\",\"contacts.create\",\"contacts.store\",\"contacts.edit\",\"contacts.update\",\"contacts.destroy\",\"cms_taxonomys.index\",\"cms_taxonomys.create\",\"cms_taxonomys.store\",\"cms_taxonomys.edit\",\"cms_taxonomys.update\",\"cms_taxonomys.destroy\",\"cms_posts.index\",\"cms_posts.create\",\"cms_posts.store\",\"cms_posts.edit\",\"cms_posts.update\",\"cms_posts.destroy\",\"call_request.index\",\"call_request.show\",\"call_request.update\",\"call_request.destroy\",\"cms_products.index\",\"cms_products.create\",\"cms_products.store\",\"cms_products.edit\",\"cms_products.update\",\"cms_products.destroy\",\"web.social\",\"web.social.update\",\"web.information\",\"web.information.update\",\"web.image\",\"web.image.update\",\"web.source\",\"web.source.update\",\"menus.index\",\"menus.create\",\"menus.store\",\"menus.edit\",\"menus.update\",\"menus.destroy\",\"pages.index\",\"pages.create\",\"pages.store\",\"pages.edit\",\"pages.update\",\"pages.destroy\",\"block_contents.index\",\"block_contents.create\",\"block_contents.store\",\"block_contents.edit\",\"block_contents.update\",\"block_contents.destroy\",\"admins.index\",\"admins.create\",\"admins.store\",\"admins.edit\",\"admins.update\",\"admins.destroy\",\"roles.index\",\"roles.create\",\"roles.store\",\"roles.edit\",\"roles.update\",\"roles.destroy\",\"admin_menus.index\",\"admin_menus.create\",\"admin_menus.store\",\"admin_menus.edit\",\"admin_menus.update\",\"admin_menus.destroy\"]}', 2, 'active', 1, 1, '2021-10-02 11:28:09', '2023-07-08 08:03:39');
+(2, 'Quản trị hệ thống', 'Quyền dành cho người quản trị hệ thống', '{\"menu_id\":[\"72\",\"62\",\"59\",\"51\",\"52\",\"53\",\"73\",\"13\",\"70\",\"46\",\"45\",\"44\",\"71\",\"58\",\"42\",\"41\",\"17\",\"10\",\"3\",\"5\",\"6\"],\"function_code\":[\"contacts.index\",\"contacts.create\",\"contacts.store\",\"contacts.edit\",\"contacts.update\",\"contacts.destroy\",\"cms_taxonomys.index\",\"cms_taxonomys.create\",\"cms_taxonomys.store\",\"cms_taxonomys.edit\",\"cms_taxonomys.update\",\"cms_taxonomys.destroy\",\"cms_posts.index\",\"cms_posts.create\",\"cms_posts.store\",\"cms_posts.edit\",\"cms_posts.update\",\"cms_posts.destroy\",\"call_request.index\",\"call_request.show\",\"call_request.update\",\"call_request.destroy\",\"cms_products.index\",\"cms_products.create\",\"cms_products.store\",\"cms_products.edit\",\"cms_products.update\",\"cms_products.destroy\",\"web.social\",\"web.social.update\",\"web.information\",\"web.information.update\",\"web.image\",\"web.image.update\",\"web.source\",\"web.source.update\",\"menus.index\",\"menus.create\",\"menus.store\",\"menus.edit\",\"menus.update\",\"menus.destroy\",\"pages.index\",\"pages.create\",\"pages.store\",\"pages.edit\",\"pages.update\",\"pages.destroy\",\"block_contents.index\",\"block_contents.create\",\"block_contents.store\",\"block_contents.edit\",\"block_contents.update\",\"block_contents.destroy\",\"admins.index\",\"admins.create\",\"admins.store\",\"admins.edit\",\"admins.update\",\"admins.destroy\",\"roles.index\",\"roles.create\",\"roles.store\",\"roles.edit\",\"roles.update\",\"roles.destroy\",\"admin_menus.index\",\"admin_menus.create\",\"admin_menus.store\",\"admin_menus.edit\",\"admin_menus.update\",\"admin_menus.destroy\"]}', 2, 'active', 1, 1, '2021-10-02 11:28:09', '2023-07-10 02:09:45');
 
 -- --------------------------------------------------------
 
@@ -1224,13 +1224,13 @@ INSERT INTO `tb_roles` (`id`, `name`, `description`, `json_access`, `iorder`, `s
 
 CREATE TABLE `tb_widgets` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `widget_code` varchar(255) DEFAULT NULL,
-  `title` varchar(255) NOT NULL,
-  `brief` text DEFAULT NULL,
+  `widget_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `brief` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
-  `image` varchar(255) DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1253,13 +1253,13 @@ INSERT INTO `tb_widgets` (`id`, `widget_code`, `title`, `brief`, `json_params`, 
 
 CREATE TABLE `tb_widget_configs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
-  `widget_code` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `widget_code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `json_params` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`json_params`)),
   `is_config` tinyint(1) NOT NULL DEFAULT 1,
   `iorder` int(11) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'active',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `admin_created_id` bigint(20) UNSIGNED DEFAULT NULL,
   `admin_updated_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1285,26 +1285,26 @@ INSERT INTO `tb_widget_configs` (`id`, `name`, `description`, `widget_code`, `js
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `affiliate_id` int(11) DEFAULT NULL,
-  `affiliate_code` varchar(255) DEFAULT NULL,
+  `affiliate_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total_score` double NOT NULL DEFAULT 0,
   `total_money` double NOT NULL DEFAULT 0,
   `total_payment` double NOT NULL DEFAULT 0,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `remember_token` varchar(100) DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `user_type` varchar(255) DEFAULT NULL,
+  `user_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified` tinyint(1) NOT NULL DEFAULT 0,
-  `email_verification_code` varchar(255) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'pending',
+  `email_verification_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
   `is_super_user` tinyint(1) NOT NULL DEFAULT 0,
-  `avatar` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `birthday` date DEFAULT NULL,
-  `sex` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
+  `sex` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `count_view_info` int(11) NOT NULL DEFAULT 0,
   `country_id` int(11) DEFAULT NULL,
   `city_id` int(11) DEFAULT NULL,
@@ -1592,7 +1592,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -1628,7 +1628,7 @@ ALTER TABLE `tb_affiliate_payments`
 -- AUTO_INCREMENT cho bảng `tb_blocks`
 --
 ALTER TABLE `tb_blocks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_block_contents`
@@ -1676,7 +1676,7 @@ ALTER TABLE `tb_component_configs`
 -- AUTO_INCREMENT cho bảng `tb_contacts`
 --
 ALTER TABLE `tb_contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_logs`

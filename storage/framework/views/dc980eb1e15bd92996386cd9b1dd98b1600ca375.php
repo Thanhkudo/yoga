@@ -48,9 +48,8 @@
                     ?>
                     <div class="col-12 col-lg-5 mb-4 mb-lg-0">
                         <div class="item_video">
-                            <div class="frame">
-                                <?php echo $video; ?>
-
+                            <div class="frame data_iframe" data ="<?php echo e($video); ?>">
+                                
                             </div>
                             <a href="<?php echo e($url_link); ?>">
                                 <p class="text-right">

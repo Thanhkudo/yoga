@@ -34,11 +34,12 @@
 
 @push('style')
     <style>
-        .learning_detail .bg_page {
+        .bg_page {
             background: url({{ $image_for_screen }});
             background-size: 100% 100%;
             background-repeat: no-repeat;
-            height: calc(100vh - 180px);
+            height: auto;
+            min-height:200px;
             max-height: 570px;
         }
     </style>
@@ -49,12 +50,7 @@
     <div class="bodywrap container">
         <section id="slider" class="">
             <div id="title" class="page-title">
-                <div class="bg_page"
-                    style="background: url({{ $image_for_screen }});
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            height: calc(100vh - 180px);
-            max-height: 570px;">
+                <div class="bg_page">
                     <div class="container d-flex justify-content-md-end">
                         <div class="col-12 col-md-6 mt_page_title">
                             <h2 class="title">
