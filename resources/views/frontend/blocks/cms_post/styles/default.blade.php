@@ -11,12 +11,12 @@
         $params['is_featured'] = true;
         $params['is_type'] = App\Consts::POST_TYPE['post'];
         $rows = App\Http\Services\ContentService::getCmsPost($params)
-            ->limit(6)
+            ->limit(3)
             ->get();
     @endphp
 
 
-    <section class="section-padding container blog mt_page_title">
+    {{-- <section class="section-padding container blog mt_page_title">
         <div class="box_frame">
             <div class="box_title text-center mb-3 mb-lg-5">
                 <h2 class="title text-uppercase">{{ $title }}</h2>
@@ -58,5 +58,45 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
+
+    <div class="our-discover">
+        <div class="container">
+            <div class="our-discover-tittle">
+                <span>{{ $url_link }}</span>
+                <p>{{ $title }}</p>
+            </div>
+            <div class="row d-flex justify-content-between our-discover-content">
+                @foreach ($rows as $item)
+                    @php
+                        $title = $item->json_params->title->{$locale} ?? $item->title;
+                        $name_admin = $item->name ?? '';
+                        $brief = $item->json_params->brief->{$locale} ?? $item->brief;
+                        $content = $item->json_params->content->{$locale} ?? $item->content;
+                        $image = $item->image_thumb != '' ? $item->image_thumb : ($item->image != '' ? $item->image : null);
+                        $date = date('d', strtotime($item->created_at));
+                        $month = date('m', strtotime($item->created_at));
+                        $year = date('Y', strtotime($item->created_at));
+                        // Viet ham xu ly lay slug
+                        $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->taxonomy_alias ?? $item->taxonomy_title, $item->taxonomy_id);
+                        $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->alias ?? $title, $item->id, 'detail', $item->taxonomy_title);
+                    @endphp
+                    <div class="col-12 col-md-4 p-md-4">
+                        <div class="row">
+                            <div class="content-img col-5 col-md-12">
+                                <img src="{{ $image }}" alt="" />
+                            </div>
+                            <div class="content col-7 col-md-12">
+                                <span>{{ $brief }}</span>
+                                <p>{{ $title }}</p>
+                                <div class="button-read-more d-none d-md-flex">
+                                    <button>Read More</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 @endif

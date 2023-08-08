@@ -1,0 +1,61 @@
+.our-discover {
+    background: #000;
+    padding: 100px 0px;
+}
+
+.our-discover .box-our-discover {
+    padding: 0px 20px;
+}
+
+.our-discover .our-discover-tittle {
+    text-align: center;
+    color: #FFF;
+
+}
+
+.our-discover .our-discover-tittle span {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+
+.our-discover .our-discover-tittle p {
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.our-discover .our-discover-content {
+    margin-top: 50px;
+}
+
+.our-discover .our-discover-content .content-img {
+    margin-bottom: 15px;
+}
+
+.our-discover .our-discover-content .content span {
+    color: #616161;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.our-discover .our-discover-content .content p {
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.our-discover .our-discover-content .content .button-read-more {
+    margin-top: 35px;
+}
+
+.our-discover .our-discover-content .content .button-read-more button {
+    border-radius: 3px;
+    background: #FFE502;
+    border: 0px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px 15px;
+}

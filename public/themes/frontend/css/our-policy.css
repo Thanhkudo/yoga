@@ -1,0 +1,34 @@
+.our-policy {
+  border-bottom: 1px solid #d9d9d9;
+}
+.our-policy .scroll-box-mb {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 32px 0px;
+}
+.our-policy .scroll-box-mb .box-policy {
+  min-width: 280px;
+}
+.our-policy .scroll-box-mb .box-policy:not(:first-child) {
+  border-left: solid 1px #d9d9d9;
+}
+.our-policy .scroll-box-mb .box-policy p {
+  white-space: break-spaces;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+.our-policy .scroll-box-mb .box-policy .vertical-line {
+  border-left: solid 1px #d9d9d9;
+  height: 100%;
+}
+
+@media screen and (min-width: 1200px) {
+  .our-policy .scroll-box-mb {
+    overflow-x: hidden;
+    padding: 0px;
+    margin: 0px;
+  }
+}

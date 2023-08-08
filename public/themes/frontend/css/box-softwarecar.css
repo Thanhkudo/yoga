@@ -1,0 +1,130 @@
+.box-softwarecar {
+    background: #F5F5F5;
+    padding: 50px 0px;
+}
+
+.logo-softwarecar img {
+    height: 52px;
+}
+
+.box-softwarecar .logo-text-software {
+    margin-top: -25px;
+}
+
+.box-softwarecar .logo-text-software span {
+    color: #C60000;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.box-softwarecar .logo-text-software .text-large {
+    color: #000;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.item-content .button-learn-more {
+    margin-top: 20px;
+}
+
+.box-content:nth-child(2n) .content {
+    padding-top: 55px !important;
+    text-align: center;
+}
+.box-content:nth-child(2n) .content span {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 500;
+}
+.box-content:nth-child(2n) .content p {
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    margin-top: 5px;
+}
+/* .item-content .content-between {
+    padding-top: 55px;
+} */
+
+.button-learn-more button {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px 15px;
+    background: #FFE502;
+    border-radius: 3px;
+    border: 0px;
+}
+
+.box-softwarecar .box-content-img {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+.box-softwarecar .content .item-content {
+    border-radius: 5px;
+    background: #FFF;
+    position: relative;
+    padding: 0px 10px;
+    margin: 15px 0px;
+    height: 100%;
+}
+
+.box-softwarecar .content .item-content .content {
+    padding: 20px;
+}
+
+.box-softwarecar .content .item-content .content span {
+    display: block;
+}
+
+.box-softwarecar .content .top-content {
+    color: #969595;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.box-softwarecar .content .bottom-content {
+    color: #000;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.box-content:nth-child(2n+1) .content p {
+    color: #616161;
+    font-size: 14px;
+    font-weight: 400;
+    width: 72%;
+    margin-top: 5px;
+}
+
+/* .content-between span {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 500;
+
+} */
+
+/* .content .content-between p {
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    margin-top: 5px;
+} */
+
+@media screen and (min-width: 992px) {
+    .box-softwarecar {
+        padding: 90px 0px;
+    }
+    .box-softwarecar .content .item-content .content {
+        padding: 40px;
+        position: relative;
+        display: block;
+    }
+}

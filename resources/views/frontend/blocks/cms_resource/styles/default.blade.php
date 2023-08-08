@@ -1,49 +1,106 @@
 @if ($block)
     @php
         $title = $block->json_params->title->{$locale} ?? $block->title;
+        $id = $block->json_params->id->{$locale} ?? $block->id;
+        $sub = $block->json_params->sub->{$locale} ?? $block->sub;
         $brief = $block->json_params->brief->{$locale} ?? $block->brief;
         $content = $block->json_params->content->{$locale} ?? $block->content;
         $background = $block->image_background != '' ? $block->image_background : url('assets/img/banner.jpg');
         $url_link = $block->url_link != '' ? $block->url_link : '';
         $url_link_title = $block->json_params->url_link_title->{$locale} ?? $block->url_link_title;
-
+        
         // Filter all blocks by parent_id
         $block_childs = $blocks->filter(function ($item, $key) use ($block) {
             return $item->parent_id == $block->id;
         });
-
-        $params['status'] = App\Consts::POST_STATUS['active'];
-        $params['is_featured'] = true;
-        $params['is_type'] = App\Consts::POST_TYPE['resource'];
-
-        $rows = App\Http\Services\ContentService::getCmsPost($params)->get();
-        $i = 0;
     @endphp
 
-    <div class="mt-6">
-        <div class="container clearfix">
-            <div class="row real-estate-properties clearfix">
-                @foreach ($rows as $item)
-                    @php
-                        $i++;
-                        $title = $item->json_params->title->{$locale} ?? $item->title;
-                        $brief = $item->json_params->brief->{$locale} ?? $item->brief;
-                        $content = $item->json_params->content->{$locale} ?? $item->content;
-                        $image = $item->image_thumb != '' ? $item->image_thumb : ($item->image != '' ? $item->image : null);
-                        $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->taxonomy_alias ?? $item->taxonomy_title, $item->taxonomy_id);
-                        $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->alias ?? $title, $item->id, 'detail', $item->taxonomy_title);
-                    @endphp
-                    <div class="<?=($i==1)?"col-lg-7":(($i==2)?"col-lg-5":"col-lg-4")?>">
-                        <a href="#"
-                            style="background: url('{{$image}}') no-repeat bottom center; background-size: cover;">
-                            <div class="vertical-middle dark center">
-                                <div class="heading-block m-0 border-0">
-                                    <h3 class="text-capitalize fw-medium">{{$title}}</h3>
+    <div class="form-product-best-seller product-category">
+        <div class="container">
+            <div class="d-flex flex-column gap-30">
+                <div class="product-best-selle-title text-center mb-5">
+                    <h2 class="title"
+                        style="background: url({{ $background }});  background-size: 80% 100%;
+                    background-repeat: no-repeat;
+                    background-position: center center;">
+                        {{ $title }}</h2>
+                </div>
+                @if ($block_childs)
+                    <div class="form-product-category row">
+                        @foreach ($block_childs as $item)
+                            @php
+                                $title_childs = $item->json_params->title->{$locale} ?? $item->title;
+                                $sub_childs = $item->json_params->sub->{$locale} ?? $item->sub;
+                                $item_childs = $blocks->filter(function ($block_child, $key) use ($item) {
+                                    return $block_child->parent_id == $item->id;
+                                });
+                                // dd($sub_childs)
+                            @endphp
+                            @if ($sub_childs == 2 && $title_childs == 'Cột trái')
+                                <div
+                                    class="col-12 col-md-3 p-0 colum-form-product-category row m-0 justify-content-between">
+                                    @foreach ($item_childs as $item_child)
+                                        @php
+                                            $title_childs = $item_child->json_params->title->{$locale} ?? $item_child->title;
+                                            $sub_childs = $item_child->json_params->sub->{$locale} ?? $item_child->sub;
+                                            $image = $item_child->image != '' ? $item_child->image : null;
+                                            $image_background = $item_child->image_background != '' ? $item_child->image_background : null;
+                                        @endphp
+                                        <div class="item-product-category p-1">
+                                            <img class="" width="" src="{{ $image }}"
+                                                alt="" />
+                                            <div class="d-flex flex-column content-product-category pt-lg-5">
+                                                <span>{{ $title_childs }}</span>
+                                                <a href="">Shop now</a>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                            </div>
-                        </a>
+                            @endif
+                            @if ($sub_childs == 1 && $title_childs == 'Cột giữa')
+                                <div class="col-12 col-md-6 p-0">
+                                    @foreach ($item_childs as $item_child)
+                                        @php
+                                            $title_childs = $item_child->json_params->title->{$locale} ?? $item_child->title;
+                                            $sub_childs = $item_child->json_params->sub->{$locale} ?? $item_child->sub;
+                                            $image = $item_child->image != '' ? $item_child->image : null;
+                                            $image_background = $item_child->image_background != '' ? $item_child->image_background : null;
+                                        @endphp
+                                        <div class="item-product-category p-1">
+                                            <img class="" width="" src="{{ $image }}"
+                                                alt="" />
+                                            <div class="d-flex flex-column content-product-category pt-lg-5">
+                                                <span>{{ $title_childs }}</span>
+                                                <a href="">Shop now</a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                            @if ($sub_childs == 2 && $title_childs == 'Cột phải')
+                                <div
+                                    class="col-12 col-md-3 p-0 colum-form-product-category row m-0 justify-content-between">
+                                    @foreach ($item_childs as $item_child)
+                                        @php
+                                            $title_childs = $item_child->json_params->title->{$locale} ?? $item_child->title;
+                                            $sub_childs = $item_child->json_params->sub->{$locale} ?? $item_child->sub;
+                                            $image = $item_child->image != '' ? $item_child->image : null;
+                                            $image_background = $item_child->image_background != '' ? $item_child->image_background : null;
+                                        @endphp
+                                        <div class="item-product-category p-1">
+                                            <img class="" width="" src="{{ $image }}"
+                                                alt="" />
+                                            <div class="d-flex flex-column content-product-category pt-lg-5">
+                                                <span>{{ $title_childs }}</span>
+                                                <a href="">Shop now</a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
-                @endforeach
+                @endif
             </div>
         </div>
     </div>

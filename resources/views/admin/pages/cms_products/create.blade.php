@@ -120,8 +120,15 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>@lang('Price')</label>
-                                            <input type="number" class="form-control" name="json_params[price]"
+                                            <input type="text" class="form-control" name="json_params[price_old]"
                                                 placeholder="@lang('Price')" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>@lang('Discount price')</label>
+                                            <input type="text" class="form-control" name="json_params[price]"
+                                                placeholder="@lang('Discount price')" value="">
                                         </div>
                                     </div>
 
@@ -169,8 +176,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
-                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>@lang('Title top')</label>
+                                            <input type="text" class="form-control" name="json_params[title_top]"
+                                                placeholder="@lang('Title top')" value="">
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">

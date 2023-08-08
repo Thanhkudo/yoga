@@ -1,0 +1,56 @@
+.banner .banner-content {
+  width: 70%;
+  padding-top: 32px;
+  padding-bottom: 142px;
+}
+.banner .banner-content .btn-best-price {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 3.3px;
+  border-radius: 500px;
+  background: #000;
+  padding: 4px 12px;
+}
+.banner .banner-content .service {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 140%;
+}
+.banner .banner-content p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+}
+.banner .banner-content .btn-shop-now {
+  border-radius: 3px;
+  background: #1e1e1e;
+  padding: 14px 32px;
+  font-size: 16px;
+}
+@media screen and (min-width: 768px) {
+  .banner .banner-content {
+    width: 55%;
+}
+}
+@media screen and (min-width: 992px) {
+  .banner {
+    background-size: cover;
+  }
+  .banner .banner-content {
+    width: 598px;
+    padding-top: 114px;
+    padding-bottom: 286px;
+  }
+  .banner .banner-content .service {
+    font-size: 46px;
+    line-height: 63px;
+  }
+  .banner .banner-content p {
+    font-size: 18px;
+  }
+  .banner .banner-content .btn-shop-now {
+    padding: 19px 50px;
+    font-size: 18px;
+  }
+}

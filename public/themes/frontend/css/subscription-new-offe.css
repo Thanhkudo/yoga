@@ -1,0 +1,96 @@
+.subscription-new-offe {
+  padding: 0px;
+  width: 100%;
+}
+
+.subscription-new-offe-left {
+  background: #ffe502;
+  padding: 40px 20px;
+}
+
+.subscription-new-offe-right {
+  background: url("../image/subscription-new-offe.png");
+  padding: 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 300px;
+}
+
+.subscription-new-offe-left .title .title-top {
+  font-size: 48px;
+  line-height: 64px;
+  font-weight: 600;
+}
+
+.subscription-new-offe-left .title .title-bottom {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 160%;
+}
+
+.subscription-new-offe-left {
+  background: #ffe502;
+  padding: 40px 20px;
+}
+
+@media (min-width: 992px) {
+  .subscription-new-offe-left .title .title-top {
+    font-size: 62px;
+  }
+  .subscription-new-offe-left .title .title-bottom {
+    font-size: 36px;
+    line-height: 48px;
+  }
+}
+
+.subscription-new-offe-left .title span {
+  display: block;
+}
+
+.subscription-new-offe-left .title p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-top: 15px;
+}
+
+.form-send-mail .input-group {
+  border: solid 1px #000;
+  border-radius: 0.375rem;
+}
+
+.form-send-mail .form-control:focus {
+  box-shadow: none;
+}
+
+.form-send-mail .input-group span,
+.form-send-mail .input-group input {
+  background: #ffe502;
+  border: none;
+}
+
+.form-send-mail .input-group button {
+  background: #000;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 30px;
+  padding: 16px 28px;
+}
+
+@media screen and (min-width: 768px) {
+  .subscription-new-offe {
+    flex-direction: row-reverse;
+  }
+}
+@media (min-width: 1200px) {
+  .subscription-new-offe .subscription-new-offe-left {
+    padding: 120px;
+  }
+}
+@media (min-width: 1600px) {
+  .subscription-new-offe .subscription-new-offe-left {
+    padding: 160px;
+  }
+}

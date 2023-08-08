@@ -9,38 +9,42 @@
         $url_link_title = $block->json_params->url_link_title->{$locale} ?? $block->url_link_title;
         $style = isset($block->json_params->style) && $block->json_params->style == 'slider-caption-right' ? 'd-none' : '';
         
-        $image_for_screen = null;
-        if ($agent->isDesktop() && $image_background != null) {
-            $image_for_screen = $image_background;
-        } else {
-            $image_for_screen = $image;
-        }
+        // $image_for_screen = null;
+        // if ($agent->isDesktop() && $image_background != null) {
+        //     $image_for_screen = $image_background;
+        // } else {
+        //     $image_for_screen = $image;
+        // }
         
         $block_childs = $blocks->filter(function ($item, $key) use ($block) {
             return $item->parent_id == $block->id;
         });
-        
     @endphp
-    <section id="slider" class="">
-      <div id="title" class="page-title">
-        <div class="bg_page" style="background: url({{$image_for_screen}});
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        height: calc(100vh - 180px);
-        max-height: 570px;">
-          <div class="container d-flex justify-content-md-end">
-            <div class="col-12 col-md-8 mt_page_title">
-              
-              <h2 class="title">
-                {!!$brief!!}
-              </h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <style>
+        .banner {
+            background: url({{ $image_background }}) no-repeat center center;
+            background-size: cover;
+        }
 
-    <div class="container mt-5">
-      <p class="grey"><i class="fas fa-play mr-2"></i> {{$title}}</p>
+        @media (min-width: 768px) {
+            .banner {
+                background: url({{ $image }}) no-repeat center center;
+            }
+        }
+    </style>
+    <div class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <a href="" class="btn-best-price text-uppercase text-center">best price</a>
+                <div class="mt-3 service">
+                    Customize. Modify. Upgrade. Repair. Replace.
+                </div>
+                <p class="mt-3">
+                    Glauben oder nicht glauben, Lorem Ipsum ist nicht nur ein
+                    zufälliger Text. Er hat Wurzeln aus der...
+                </p>
+                <a href="" class="btn-shop-now text-uppercase text-center mt-md-4 mt-3 d-inline-flex">shop now</a>
+            </div>
+        </div>
     </div>
 @endif

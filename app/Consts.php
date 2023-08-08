@@ -47,6 +47,7 @@ class Consts
         'deactive' => 'deactive'
     ];
 
+
     // Array taxonomy status
     const TAXONOMY_STATUS = [
         'active' => 'active',

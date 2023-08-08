@@ -13,13 +13,17 @@
         $block_childs = $blocks->filter(function ($item, $key) use ($block) {
             return $item->parent_id == $block->id;
         });
+        // dd($brief)
     @endphp
 
-
-    <section id="box_list" class="mb-5">
-        <div class="d-flex align-items-center justify-content-between padding w-100">
-            <div class="col-12 col-lg-6">
-                <div class="frame">
+    <div class="the-most-wanted-dimensions">
+        <div class="container">
+            <div class="title text-center">
+                <h2 class="text-uppercase">{{ $title }}</h2>
+                <p>{{ $brief }}</p>
+            </div>
+            <div class="content">
+                <div class="row justify-content-center">
                     @if ($block_childs)
                         @foreach ($block_childs as $item)
                             @php
@@ -32,27 +36,11 @@
                                 $icon = $item->icon != '' ? $item->icon : '';
                                 $style = $item->json_params->style ?? '';
                             @endphp
-
-                            <div class="box_item">
-                                <div class="item">
-                                    <svg width="47" height="48" viewBox="0 0 47 48" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M23.5356 9.1351L11.7856 18.0716L23.5356 27.0081L11.7856 35.9446L0 26.9233L11.7767 17.9868L0 9.1351L11.7767 0.198608L23.5356 9.1351ZM11.7144 38.7538L23.4644 29.8173L35.2144 38.7538L23.4644 47.6903L11.7144 38.7538ZM23.5356 26.9233L35.2856 17.9868L23.5356 9.12449L35.2233 0.198608L47 9.1351L35.2233 18.0716L47 26.9975L35.2233 35.934L23.5356 26.9233Z"
-                                            fill="#C1E3E5" />
-                                    </svg>
-                                    <span class="text-uppercase">{{$title_child}}</span>
-                                </div>
-                            </div>
+                            <div class="dimensions-item d-inline">{{ $title_child }}</div>
                         @endforeach
                     @endif
                 </div>
             </div>
-            <div class="col-12 col-lg-6 d-none d-lg-flex box-img">
-                <div class="img">
-                    <img class="lazyload" src="{{ asset('images/load.gif') }}" data-src="{{$image}}" alt="{{ $title }}" />
-                </div>
-            </div>
         </div>
-    </section>
+    </div>
 @endif

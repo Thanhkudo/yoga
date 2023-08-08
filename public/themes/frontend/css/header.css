@@ -1,0 +1,97 @@
+header {
+  background-color: #000;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0px;
+  flex-shrink: 0;
+}
+
+header .top-header {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+header .top-header p,
+header .top-header a {
+  font-size: 12px;
+  display: inline;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 1.2px;
+}
+
+.box-logo .title-logo {
+  margin-top: -20px;
+}
+
+.item-menu {
+  top: 10px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.title-logo span {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  display: inline;
+  padding: 0px;
+}
+
+.box-logo .text-large {
+  font-size: 24px;
+}
+
+.box-logo .title-logo {
+  margin-top: -25px;
+}
+
+.menu {
+  gap: 50px;
+  overflow: hidden;
+}
+
+.box-item {
+  display: inline-flex;
+  padding: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 50px;
+  position: relative;
+}
+ 
+header .box-icon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.item-icon {
+  width: 18px;
+}
+
+.icon-cart {
+  position: relative;
+}
+
+.item-order {
+  background: #ffe502;
+  position: absolute;
+  font-size: 9px;
+  font-weight: 600;
+  top: 0px;
+  left: 8px;
+  color: #000;
+  width: 13px;
+  height: 13px;
+}
+@media screen and (min-width: 992px) {  
+  .content-top-header {
+    gap: 15px;
+  }
+  .box-content {
+    gap: 25px;
+  }
+}
+

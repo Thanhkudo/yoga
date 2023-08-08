@@ -1,0 +1,97 @@
+.product-best-seller-image {
+    padding: 25px;
+}
+
+.carousel-inner .carousel-item {
+    /* display: flex; */
+    /* justify-content: space-between!important; */
+    background: #FFF;
+}
+.carousel .carousel-control-prev, 
+.carousel .carousel-control-next {
+    width: 40px;
+    height: 40px;
+    padding: 15px;
+    border-radius: 50%;
+    top: 30%;
+    box-shadow: 0px 0px 5px 0px #aaa;;
+} 
+
+.product-item h3 {
+    font-size: 18px;
+    min-height: 2.4em
+  }
+
+.carousel .carousel-control-prev-icon {
+    background-image: url("../image/carousel-control-prev-icon.svg");
+}
+.carousel .carousel-control-next-icon {
+    background-image: url("../image/carousel-control-next-icon.svg");
+} 
+@media (max-width: 767px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+    .carousel-inner .carousel-item-end.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(50%);
+    }
+
+    .carousel-inner .carousel-item-start.active, 
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-50%);
+    }
+    .carousel .carousel-control-prev {
+        left: -20px;
+    }
+    .carousel .carousel-control-next {
+        right: -20px;
+    }
+    .product-best-selle-title .title {
+        background-size: 100% 100%;
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 95px;
+    }
+}
+@media (min-width: 992px) {
+    .carousel-inner .carousel-item-end.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(33.333333333%);
+    }
+
+    .carousel-inner .carousel-item-start.active, 
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-33.333333333%);
+    }
+    .carousel .carousel-control-prev {
+        left: -50px;
+    }
+    .carousel .carousel-control-next {
+        right: -50px;
+    }
+    .product-best-selle-title .title {
+        background-size: 100% 100%;
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 95px;
+    }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+    transform: translateX(0);
+}
